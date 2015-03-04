@@ -15,7 +15,7 @@ Our teacher indicated (but did not include in the exam specifications) that cons
 
 ## Migrations ##
 
-`grails dbm-gorm-diff nameOfMigration.groovy -add` **or** `grails dbm-generate-gorm-changelog changelog.groovy` (first time)
+`grails dbm-gorm-diff <name>.groovy -add` **or** `grails dbm-generate-gorm-changelog changelog.groovy` (first time)
 
 `grails dbm-update`
 
