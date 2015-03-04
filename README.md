@@ -15,3 +15,18 @@ Our teacher indicated (but did not include in the exam specifications) that cons
 
 ## Migrations ##
 
+*First migration:*
+
+`grails dbm-generate-gorm-changelog changelog.groovy`
+
+`grails dbm-update`
+
+`grails dbm-changelog-sync`
+
+*In the future when the model changes:*
+
+`grails dbm-gorm-diff nameOfMigration.groovy -add`
+
+`grails dbm-update`
+
+`grails dbm-changelog-sync`
