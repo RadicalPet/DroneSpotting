@@ -20,7 +20,7 @@ class RegisteredDrones {
         country (blank: false)        
         releaseDate (blank: true)
         manufacturer (blank: true)
-        nationalityManufacturer(blank: true) 
+        nationalityManufacturer(blank: true, nullable:true) 
         capacity (blank: true)
         maxWeight (blank: true)
         powerplant (blank: true)

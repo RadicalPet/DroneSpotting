@@ -1,5 +1,6 @@
 package dronespotting
 import grails.plugin.springsecurity.annotation.Secured
+import gorm.recipes.*
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -12,7 +13,19 @@ class RegisteredDronesController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond RegisteredDrones.list(params), model:[registeredDronesInstanceCount: RegisteredDrones.count()]
+        if (!params.query){
+            respond RegisteredDrones.list(params), model:[registeredDronesInstanceCount: RegisteredDrones.count()]
+        }
+        else{
+            def results = RegisteredDrones.findAllByModelIlike("%"+params.query+"%")
+            [registeredDronesInstanceList: results, registeredDronesInstanceTotal: RegisteredDrones.count()]
+        }
+    }
+    def search() {
+            
+        def results = RegisteredDrones.findAllByModelIlike("%"+params.query+"%")
+         [registeredDronesInstanceList: results, registeredDronesInstanceTotal: RegisteredDrones.count()]
+        //[hey: result.model]       
     }
 
     def show(RegisteredDrones registeredDronesInstance) {
