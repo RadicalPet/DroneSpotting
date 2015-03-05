@@ -5,6 +5,7 @@ class RegisteredDrones {
     Date releaseDate
     String country
     String manufacturer
+    String nationalityManufacturer
     BigDecimal capacity
     BigDecimal maxWeight
     String powerplant
@@ -18,7 +19,8 @@ class RegisteredDrones {
         model (blank: false)
         country (blank: false)        
         releaseDate (blank: true)
-        manufacturer (blank: true)      
+        manufacturer (blank: true)
+        nationalityManufacturer(blank: true) 
         capacity (blank: true)
         maxWeight (blank: true)
         powerplant (blank: true)
