@@ -9,9 +9,12 @@
 *
 *= require bootstrap
 *= require font-awesome
+*= require timeline-2.3.0
+
 *= require mobile
 *= require_self
 *= require errors
+
 *= require reset
 *= require main
 */
