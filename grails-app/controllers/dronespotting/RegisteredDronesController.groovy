@@ -1,6 +1,4 @@
-package dronespotting.admin
-
-
+package dronespotting
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional

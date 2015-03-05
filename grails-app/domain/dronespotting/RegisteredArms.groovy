@@ -1,4 +1,4 @@
-package dronespotting.admin
+package dronespotting
 
 class RegisteredArms {
     

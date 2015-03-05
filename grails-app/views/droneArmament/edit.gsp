@@ -1,4 +1,4 @@
-<%@ page import="dronespotting.admin.DroneArmament" %>
+<%@ page import="dronespotting.DroneArmament" %>
 <!DOCTYPE html>
 <html>
 	<head>

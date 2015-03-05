@@ -1,4 +1,4 @@
-<%@ page import="dronespotting.admin.DroneArmament" %>
+<%@ page import="dronespotting.DroneArmament" %>
 
 
 
@@ -7,7 +7,7 @@
 		<g:message code="droneArmament.registeredArms.label" default="Registered Arms" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="registeredArms" name="registeredArms.id" from="${dronespotting.admin.RegisteredArms.list()}" optionKey="id" required="" value="${droneArmamentInstance?.registeredArms?.id}" class="many-to-one"/>
+	<g:select id="registeredArms" name="registeredArms.id" from="${dronespotting.RegisteredArms.list()}" optionKey="id" required="" value="${droneArmamentInstance?.registeredArms?.id}" class="many-to-one"/>
 
 </div>
 
@@ -16,7 +16,7 @@
 		<g:message code="droneArmament.registeredDrones.label" default="Registered Drones" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="registeredDrones" name="registeredDrones.id" from="${dronespotting.admin.RegisteredDrones.list()}" optionKey="id" required="" value="${droneArmamentInstance?.registeredDrones?.id}" class="many-to-one"/>
+	<g:select id="registeredDrones" name="registeredDrones.id" from="${dronespotting.RegisteredDrones.list()}" optionKey="id" required="" value="${droneArmamentInstance?.registeredDrones?.id}" class="many-to-one"/>
 
 </div>
 
