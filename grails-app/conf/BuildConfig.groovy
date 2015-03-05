@@ -40,10 +40,7 @@ grails.project.dependency.resolution = {
         mavenLocal()
         grailsCentral()
         mavenCentral()
-        // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
-        //mavenRepo "http://repository.codehaus.org"
-        //mavenRepo "http://download.java.net/maven/2/"
-        //mavenRepo "http://repository.jboss.com/maven2/"
+  
     }
 
     dependencies {
@@ -60,11 +57,17 @@ grails.project.dependency.resolution = {
         // plugins for the compile step
         compile ":scaffolding:2.1.2"
         compile ':cache:1.1.8'
+        compile ":cache-headers:1.1.7"
         compile ":asset-pipeline:1.9.9"
+        compile ":spring-security-core:2.0-RC4"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"
         runtime ":database-migration:1.4.0"
+        runtime ":resources:1.2.14"
+        runtime ":cached-resources:1.0"
+        runtime ":zipped-resources:1.0"
+        //runtime ":yui-minify-resources:0.1.5"
         runtime ":jquery:1.11.1"
         
         // Uncomment these to enable additional asset-pipeline capabilities

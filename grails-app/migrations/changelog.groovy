@@ -133,4 +133,8 @@ databaseChangeLog = {
 	}
 
 	include file: 'extremeMigration.groovy'
+
+	include file: 'springSecurityMigration.groovy'
+
+	include file: 'springSecurityMigration2.groovy'
 }
