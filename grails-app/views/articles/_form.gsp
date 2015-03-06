@@ -25,7 +25,8 @@
 		<g:message code="articles.content.label" default="Content" />
 		
 	</label>
-	<g:textField name="content" value="${articlesInstance?.content}"/>
+	
+        <ckeditor:editor name="content" height="400px" width="80%" >${articlesInstance?.content}</ckeditor:editor>
 
 </div>
 

@@ -6,8 +6,11 @@
 // to create separate JavaScript files as needed.
 //
 //= require jquery
-//= require_self
 //= require bootstrap
+//= require jquery-1.11.1.min
+//= require jquery-ui.min
+//= require ../ckeditor/ckeditor
+//= require_self
 
 if (typeof jQuery !== 'undefined') {
 	(function($) {

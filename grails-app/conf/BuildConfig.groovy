@@ -60,7 +60,7 @@ grails.project.dependency.resolution = {
         compile ":cache-headers:1.1.7"
         compile ":asset-pipeline:1.9.9"
         compile ":spring-security-core:2.0-RC4"
-        compile ":ckeditor:3.6.6.1.0"
+        compile ":ckeditor:4.4.1.0"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"
