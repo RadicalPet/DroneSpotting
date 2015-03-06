@@ -137,4 +137,6 @@ databaseChangeLog = {
 	include file: 'springSecurityMigration.groovy'
 
 	include file: 'springSecurityMigration2.groovy'
+
+	include file: 'imagePath.groovy'
 }

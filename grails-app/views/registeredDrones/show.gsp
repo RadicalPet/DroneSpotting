@@ -59,6 +59,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${registeredDronesInstance?.nationalityManufacturer}">
+				<li class="fieldcontain">
+					<span id="nationalityManufacturer-label" class="property-label"><g:message code="registeredDrones.nationalityManufacturer.label" default="Nationality Manufacturer" /></span>
+					
+						<span class="property-value" aria-labelledby="nationalityManufacturer-label"><g:fieldValue bean="${registeredDronesInstance}" field="nationalityManufacturer"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${registeredDronesInstance?.capacity}">
 				<li class="fieldcontain">
 					<span id="capacity-label" class="property-label"><g:message code="registeredDrones.capacity.label" default="Capacity" /></span>
