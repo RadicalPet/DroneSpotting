@@ -47,6 +47,15 @@ class RegisteredDronesController {
             respond registeredDronesInstance.errors, view:'create'
             return
         }
+        def f = request.getFile("filecsv")
+        
+        if (f){
+            def webrootDir = servletContext.getRealPath("../")
+            def filename = f.getOriginalFilename()
+            File fileDest = new File(webrootDir + "/grails-app/assets/images/drones/" + filename)
+            registeredDronesInstance.imagePath = filename
+            f.transferTo(fileDest)
+        }
 
         registeredDronesInstance.save flush:true
 

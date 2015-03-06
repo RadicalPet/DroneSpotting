@@ -91,6 +91,13 @@
 	<g:field name="combatRadius" value="${fieldValue(bean: registeredDronesInstance, field: 'combatRadius')}" required=""/>
 
 </div>
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'imagePath', 'error')} required">
+	<label for="imagePath">
+		<g:message code="registeredDrones.imagePath.label" default="Image" />
+	</label>
+	<input type="file" name="filecsv"/>
+
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'droneArmament', 'error')} ">
 	<label for="droneArmament">
