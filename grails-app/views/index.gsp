@@ -21,30 +21,43 @@
             
                 var items = [];
                 
-                function handleData(data) {
-                    $.each(data.strike, function(key, obj) {
+//                $.getJSON("http://api.dronestre.am/data?callback=?", function(response) {
+//                    handleData(response);
+//                });
+//                
+//                function handleData(data) {
+//                    $.each(data.strike, function(key, obj) {
+//                        items.push({
+//                            title: "Strike " + obj.number,
+//                            start: "" + (1900 + parseInt(Math.random()*100)),
+//                            point: {
+//                                lat: obj.lat,
+//                                lon: obj.lon
+//                            },
+//                            options: {
+//                                size: obj.deaths,
+//                                awesomeness: obj.deaths,
+//                                description: obj.bij_summary_short
+//                            },
+//                            country: obj.country
+//                        })
+//                    })
+//                }
+
+                for (x=0; x<300; x++) {
                         items.push({
-                            title: "Strike " + obj.number,
+                            title: "Item " + x,
                             start: "" + (1900 + parseInt(Math.random()*100)),
                             point: {
-                                lat: obj.lat,
-                                lon: obj.lon
+                                lat: 32 + (Math.random() * 16),
+                                lon: -117 + (Math.random() * 30)
                             },
                             options: {
-                                size: obj.deaths,
-                                awesomeness: obj.deaths,
-                                description: obj.bij_summary_short
-                            },
-                            country: obj.country
+                                size: parseInt(Math.random()*5),
+                                awesomeness: parseInt(Math.random()*10)
+                            }
                         })
-                    })
-                    console.log(items);
-                }
-                console.log(items);
-                
-                $.getJSON("http://api.dronestre.am/data?callback=?").done(function(data) {
-                    handleData(data);
-                })
+                    }
                 
                 for (var i = 0; i < 5; i++) {
                     for (var j = 0; j < colors.length; j++) {
@@ -58,6 +71,9 @@
                 tm = TimeMap.init({
                     mapId: "map",
                     timelineId: "timeline",
+                    options: {
+                        mapType: 'hybrid'
+                    },
                     datasets: [
                         {
                             type: "basic",
