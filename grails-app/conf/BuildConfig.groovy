@@ -60,6 +60,7 @@ grails.project.dependency.resolution = {
         compile ":cache-headers:1.1.7"
         compile ":asset-pipeline:1.9.9"
         compile ":spring-security-core:2.0-RC4"
+        compile ":twitter-bootstrap:3.3.1"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"
@@ -76,7 +77,7 @@ grails.project.dependency.resolution = {
         
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.9.0"
-        //compile ":less-asset-pipeline:1.10.0"
+        compile ":less-asset-pipeline:1.10.0"
         //compile ":coffee-asset-pipeline:1.8.0"
         //compile ":handlebars-asset-pipeline:1.3.0.3"
     }
