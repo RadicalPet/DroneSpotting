@@ -4,7 +4,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_ADMIN']) 
+@Secured(['ROLE_ADMIN'])
 @Transactional(readOnly = true)
 class UserController {
 
@@ -18,6 +18,7 @@ class UserController {
     def show(User userInstance) {
         respond userInstance
     }
+
     def create() {
         respond new User(params)
     }

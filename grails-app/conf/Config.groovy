@@ -121,7 +121,6 @@ log4j.main = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'dronespotting.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'dronespotting.UserRole'
 grails.plugin.springsecurity.authority.className = 'dronespotting.Role'
-grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/dashboard'
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],
