@@ -20,6 +20,16 @@
 			<g:if test="${flash.message}">
 				<div class="message" role="status">${flash.message}</div>
 			</g:if>
+<!-- ADDED BY ME -->
+                    <fieldset class="form">
+                    <g:form action="index" method="GET">
+                        <div class="fieldcontain">
+                            <label for="query">Search Drones:</label>
+                            <g:textField name="query" value="${params.query}"/>
+                        </div>
+                    </g:form>
+                    </fieldset>
+<!-- EDIT END -->
 			<table>
 			<thead>
 					<tr>
@@ -32,9 +42,9 @@
 					
 						<g:sortableColumn property="manufacturer" title="${message(code: 'registeredDrones.manufacturer.label', default: 'Manufacturer')}" />
 					
-						<g:sortableColumn property="capacity" title="${message(code: 'registeredDrones.capacity.label', default: 'Capacity')}" />
+						<g:sortableColumn property="nationalityManufacturer" title="${message(code: 'registeredDrones.nationalityManufacturer.label', default: 'Nationality Manufacturer')}" />
 					
-						<g:sortableColumn property="maxWeight" title="${message(code: 'registeredDrones.maxWeight.label', default: 'Max Weight')}" />
+						<g:sortableColumn property="capacity" title="${message(code: 'registeredDrones.capacity.label', default: 'Capacity')}" />
 					
 					</tr>
 				</thead>
@@ -50,9 +60,9 @@
 					
 						<td>${fieldValue(bean: registeredDronesInstance, field: "manufacturer")}</td>
 					
-						<td>${fieldValue(bean: registeredDronesInstance, field: "capacity")}</td>
+						<td>${fieldValue(bean: registeredDronesInstance, field: "nationalityManufacturer")}</td>
 					
-						<td>${fieldValue(bean: registeredDronesInstance, field: "maxWeight")}</td>
+						<td>${fieldValue(bean: registeredDronesInstance, field: "capacity")}</td>
 					
 					</tr>
 				</g:each>

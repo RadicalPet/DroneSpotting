@@ -38,6 +38,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'nationalityManufacturer', 'error')} ">
+	<label for="nationalityManufacturer">
+		<g:message code="registeredDrones.nationalityManufacturer.label" default="Nationality Manufacturer" />
+		
+	</label>
+	<g:textField name="nationalityManufacturer" value="${registeredDronesInstance?.nationalityManufacturer}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'capacity', 'error')} required">
 	<label for="capacity">
 		<g:message code="registeredDrones.capacity.label" default="Capacity" />
@@ -80,6 +89,13 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="combatRadius" value="${fieldValue(bean: registeredDronesInstance, field: 'combatRadius')}" required=""/>
+
+</div>
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'imagePath', 'error')} required">
+	<label for="imagePath">
+		<g:message code="registeredDrones.imagePath.label" default="Image" />
+	</label>
+	<input type="file" name="filecsv"/>
 
 </div>
 
