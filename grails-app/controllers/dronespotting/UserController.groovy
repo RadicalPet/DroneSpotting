@@ -18,7 +18,6 @@ class UserController {
     def show(User userInstance) {
         respond userInstance
     }
-
     def create() {
         respond new User(params)
     }
