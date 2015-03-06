@@ -14,88 +14,93 @@
             
             var tm;
             
-            // colors for the elements on the map
-            var colors = ["1E8BC3", "913D88", "CF000F", "F89406", "2ECC71"];
-            
             $(function() {
             
-                var items = [];
+               var items = [];
                 
-//                $.getJSON("http://api.dronestre.am/data?callback=?", function(response) {
-//                    handleData(response);
-//                });
-//                
-//                function handleData(data) {
-//                    $.each(data.strike, function(key, obj) {
-//                        items.push({
-//                            title: "Strike " + obj.number,
-//                            start: "" + (1900 + parseInt(Math.random()*100)),
-//                            point: {
-//                                lat: obj.lat,
-//                                lon: obj.lon
-//                            },
-//                            options: {
-//                                size: obj.deaths,
-//                                awesomeness: obj.deaths,
-//                                description: obj.bij_summary_short
-//                            },
-//                            country: obj.country
-//                        })
-//                    })
-//                }
-
-                for (x=0; x<300; x++) {
-                        items.push({
-                            title: "Item " + x,
-                            start: "" + (1900 + parseInt(Math.random()*100)),
-                            point: {
-                                lat: 32 + (Math.random() * 16),
-                                lon: -117 + (Math.random() * 30)
-                            },
-                            options: {
-                                size: parseInt(Math.random()*5),
-                                awesomeness: parseInt(Math.random()*10)
-                            }
-                        })
-                    }
-                
-                for (var i = 0; i < 5; i++) {
-                    for (var j = 0; j < colors.length; j++) {
-                        TimeMap.themes['theme' + i + '-' + j] = TimeMapTheme.createCircleTheme({
-                            size: 5 + (i * 8),
-                            color: colors[j]
-                        });
-                    }
-                }
-
-                tm = TimeMap.init({
-                    mapId: "map",
-                    timelineId: "timeline",
-                    options: {
-                        mapType: 'hybrid'
-                    },
-                    datasets: [
-                        {
-                            type: "basic",
-                            options: {
-                                items: items,
-                                infoTemplate: '<b>{{title}}</b><div>size: {{size}}</div>' + 
-                                              '<div>awesomeness: {{awesomeness}}</div>',
-                                transformFunction: transformData,
-                            }
-                        }
-                    ],
-                    bandIntervals: [
-                        Timeline.DateTime.MONTH, 
-                        Timeline.DateTime.YEAR
-                    ]
+                $.getJSON("http://api.dronestre.am/data?callback=?", function(response) {
+                    handleData(response);
+                    makeTheme();
+                    getData();                       
                 });
                 
-                function transformData(item) {
-                    item.options.theme = "theme" + item.options.size + 
-                        "-" + parseInt(item.options.awesomeness / 2); // range 0-9, colors 0-5
-                    return item;
+                function handleData(data) {
+                    $.each(data.strike, function(key, obj) {
+                        var d = obj.date.replace("T00:00:00.000Z", " ");
+                        
+                        items.push({
+                            title: obj.bureau_id,
+                            start: d,
+                            point: {
+                                lat: obj.lat,
+                                lon: obj.lon
+                            },
+                            options: {
+                                id: obj.bureau_id,
+                                date: d,
+                                country: obj.country,
+                                target: obj.target,
+                                deaths: obj.deaths_min,
+                                civilians: obj.civilians,
+                                url: obj.bij_link,
+                                impact: parseInt(obj.deaths_min/3),
+                                scale: parseInt(Math.random()*10),
+                                description: obj.bij_summary_short
+                            },
+                            country: obj.country
+                        })
+                        
+                    });
+
                 }
+                
+                function makeTheme() {
+                    // colors for the elements on the map
+                    var colors = ["1E8BC3", "913D88", "CF000F", "F89406", "2ECC71"];
+
+                    for (var i = 0; i < items.length; i++) {
+                        for (var j = 0; j < colors.length; j++) {
+                            TimeMap.themes['theme' + i + '-' + j] = TimeMapTheme.createCircleTheme({
+                                size: 5 + (i * 8),
+                                color: colors[j]
+                            });
+                        }
+                    }
+                }
+
+                function getData() {
+                    tm = TimeMap.init({
+                        mapId: "map",
+                        timelineId: "timeline",
+                        options: {
+                            mapType: 'hybrid',
+                            mapZoom: 2,
+                            showMapTypeCtrl: false,
+                            centerOnItems: false,
+                            mapZoom: 8,
+                            mapCenter: new mxn.LatLonPoint(32.8, 70.0)
+                        },
+                        datasets: [
+                            {
+                                type: "basic",
+                                options: {
+                                    items: items,
+                                    infoTemplate: "<div class='custominfostyle'><div><span class='text-bold'>Strike:</span> {{id}}</div><div><span class='text-bold'>Date:</span> {{date}}</div><div><span class='text-bold'>Country:</span> {{country}}</div><div><span class='text-bold'>Deaths:</span> {{deaths}}</div><div><span class='text-bold'>Civilians:</span> {{civilians}}</div><div><span class='text-bold'>Target:</span> {{target}}</div><div><span class='text-bold'>URL:</span> <a href='{{url}}'>Go there</a></div></div>",
+                                    transformFunction: function(item) {
+                                        item.options.theme = "theme" + item.options.impact + 
+                                            "-" + parseInt(item.options.scale / 2);
+                                        return item;
+                                    }
+                                }
+                            }
+                        ],
+                        bandIntervals: [
+                            Timeline.DateTime.MONTH, 
+                            Timeline.DateTime.YEAR
+                        ]
+                    });
+                }
+                
             });
         </script>
     </head>
