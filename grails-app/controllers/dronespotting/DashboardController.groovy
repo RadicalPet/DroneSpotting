@@ -5,10 +5,5 @@ import grails.plugin.springsecurity.annotation.Secured
 class DashboardController {
     
     def index() { 
-        render 'login'
-    }
-     
-    def adminOnly(){
-        render 'admin'
     }
 }
