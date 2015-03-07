@@ -5,6 +5,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'articles.label', default: 'Articles')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+                <script src="../../assets/ckeditor.js" type="text/javascript"></script>
 	</head>
 	<body>
 		<a href="#edit-articles" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
