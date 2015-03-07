@@ -20,7 +20,7 @@
                         </div>
                         <div class="panel-body">
                             <g:if test="${flash.message}">
-                                <div class="message" role="status">${flash.message}</div>
+                                <div class="alert alert-info" role="status">${flash.message}</div>
                             </g:if>
                             <table class="table table-hover table-striped">
                                 <thead>
