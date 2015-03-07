@@ -13,7 +13,7 @@
                 <div class="col-md-12">
                     <div class="panel">
                         <div class="panel-heading panel-default">
-                            <h4 class="panel-title"><g:fieldValue bean="${registeredDronesInstance}" field="model"/></h4>
+                            <h4 class="panel-title"><g:message code="default.list.label" args="[entityName]" /></h4>
                             <span class="pull-right panel-button">
                                 <g:link class="btn btn-success" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
                                 <g:link class="btn btn-info" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
