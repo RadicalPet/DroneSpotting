@@ -37,9 +37,112 @@ body {
     height: 100%;
 }
 
+/* UI COMPONENTS */
+
+.btn {
+    color: #fff;
+}
+
+.btn:hover {
+    background-color: inherit !important;
+    color: inherit !important;
+}
+
+.btn:focus {
+    outline: none !important;
+}
+
+.btn.btn-success {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+}
+
+.btn.btn-info {
+    background-color: #1e8bc3;
+    border-color: #1e8bc3;
+}
+
+.btn.btn-warning {
+    background-color: #f89406;
+    border-color: #f89406;
+}
+
+.btn.btn-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.alert {
+    color: #fff;
+    padding: 10px;
+    line-height: 20px;
+}
+
+.alert.alert-success {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+}
+
+.alert.alert-info {
+    background-color: #1e8bc3;
+    border-color: #1e8bc3;
+}
+
+.alert.alert-warning {
+    background-color: #f89406;
+    border-color: #f89406;
+}
+
+.alert.alert-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.panel-heading {
+    padding: 20px;
+    color: #fff !important;
+}
+
+.panel-title {
+    font-size: 14px !important;
+}
+
+.panel-body {
+    padding: 20px !important;
+}
+
+.panel-heading.panel-default {
+    background-color: #ccc;
+    border-color: #ccc;
+}
+
+.panel-heading.panel-success {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+}
+
+.panel-heading.panel-info {
+    background-color: #1e8bc3;
+    border-color: #1e8bc3;
+}
+
+.panel-heading.panel-warning {
+    background-color: #f89406;
+    border-color: #f89406;
+}
+
+.panel-heading.panel-danger {
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
 /* GENERAL */
 
-a {
+.v-offset {
+    margin-top: 10px;
+}
+
+a, input, button {
     transition: .2s all ease;
 }
 
@@ -60,11 +163,13 @@ a {
     color: #e74c3c;
 }
 
-.navbar .nav li a.btn {
-    color: #fff;
+.navbar .nav li a:hover {
+    color: #e74c3c;
 }
-.navbar .nav li a.btn:hover {
-    color: inherit;
+
+.navbar .nav li a.btn {
+    margin-left: 20px;
+    color: #fff;
 }
 
 /* TIMEMAP */
@@ -152,8 +257,27 @@ div.custominfostyle {
     line-height: 24px;
 }
 
+/* LOGIN */
 
+#login {
+    font-size: 12px;
+}
 
+#login .panel {
+    border: none;
+}
+
+#login .control-label {
+    margin-bottom: 10px;
+}
+
+#login .chk {
+    margin-right: 10px;
+}
+
+#login input.btn {
+    font-size: 14px;
+}
 
 
 
