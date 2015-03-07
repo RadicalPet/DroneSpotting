@@ -6,7 +6,7 @@
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
-        <div class="container v-offset" id="login">
+        <div class="container v-offset">
             <div class="row">
                 <div class="col-md-12">
                     <div class="panel">
