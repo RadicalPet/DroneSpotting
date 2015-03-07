@@ -17,11 +17,14 @@
             $(function() {
             
                var items = [];
+               
+               $('#loading').show();
                 
                 $.getJSON("http://api.dronestre.am/data?callback=?", function(response) {
                     handleData(response);
                     makeTheme();
-                    getData();                       
+                    getData();
+                    $('#loading').hide();
                 });
                 
                 function handleData(data) {
@@ -106,6 +109,9 @@
     </head>
     <body>
         <div id="page-body" role="main">
+            <div id="loading">
+                <i class="fa fa-refresh fa-3x fa-spin"></i>
+            </div>
             <div id="timemap">
                 <div id="timelinecontainer">
                     <div id="timeline"></div>

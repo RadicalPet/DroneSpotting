@@ -156,6 +156,13 @@ body {
 
 /* GENERAL */
 
+#loading {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    color: #ccc;
+}
+
 .v-offset {
     margin-top: 10px;
 }
