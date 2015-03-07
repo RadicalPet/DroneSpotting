@@ -11,8 +11,6 @@ class RegisteredArms {
     Double range
     String guidance
     
-    static hasMany = [droneArmament:DroneArmament] 
-    
     static constraints = {
         id (blank: false)
         model (blank: false)
