@@ -4,11 +4,11 @@
         <title><g:message code="springSecurity.login.title"/></title>
     </head>
     <body>
-        <div class="container v-offset" id="login">
+        <div class="v-offset" id="login">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
                     <div class="panel">
-                        <div class="panel-heading panel-danger">
+                        <div class="panel-heading panel-default">
                             <h4 class="panel-title"><g:message code="springSecurity.login.header"/></h4>
                         </div>
                         <div class="panel-body">
@@ -29,7 +29,7 @@
                                         <input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me' <g:if test='${hasCookie}'>checked='checked'</g:if>/>
                                         <label for='remember_me'><g:message code="springSecurity.login.remember.me.label"/></label>
                                     </div>
-                                    <input class="btn btn-lg btn-success btn-block" type="submit" value="Proceed">
+                                    <input class="btn btn-lg btn-info btn-block" type="submit" value="Proceed">
                                 </fieldset>
                             </form>
                         </div>
