@@ -36,6 +36,8 @@ grails.mime.types = [ // the first one is the default format
 
 // Legacy setting for codec used to encode data with ${}
 grails.views.default.codec = "html"
+grails.views.gsp.codecs.expression = "none"
+grails.views.gsp.codecs.scriptlet = 'none'
 
 // The default scope for controllers. May be prototype, session or singleton.
 // If unspecified, controllers are prototype scoped.
@@ -121,7 +123,6 @@ log4j.main = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'dronespotting.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'dronespotting.UserRole'
 grails.plugin.springsecurity.authority.className = 'dronespotting.Role'
-grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/dashboard'
 grails.plugin.springsecurity.logout.postOnly = false
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],
