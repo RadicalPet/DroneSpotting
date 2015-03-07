@@ -1,119 +1,115 @@
 <%@ page import="dronespotting.RegisteredDrones" %>
 
-
-
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'model', 'error')} required">
-	<label for="model">
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'model', 'error')} required form-group">
+	<label for="model" class="control-label">
 		<g:message code="registeredDrones.model.label" default="Model" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="model" required="" value="${registeredDronesInstance?.model}"/>
+	<g:textField class="form-control" name="model" required="" value="${registeredDronesInstance?.model}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'country', 'error')} required">
-	<label for="country">
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'country', 'error')} required form-group">
+	<label for="country" class="control-label">
 		<g:message code="registeredDrones.country.label" default="Country" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="country" required="" value="${registeredDronesInstance?.country}"/>
+	<g:textField class="form-control" name="country" required="" value="${registeredDronesInstance?.country}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'releaseDate', 'error')} required">
-	<label for="releaseDate">
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'releaseDate', 'error')} required form-group">
+	<label for="releaseDate" class="control-label">
 		<g:message code="registeredDrones.releaseDate.label" default="Release Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="releaseDate" precision="day"  value="${registeredDronesInstance?.releaseDate}"  />
+	<div>
+            <g:datePicker class="form-control" name="releaseDate" precision="day" value="${registeredDronesInstance?.releaseDate}"  />
+        </div>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'manufacturer', 'error')} required">
-	<label for="manufacturer">
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'manufacturer', 'error')} required form-group">
+	<label for="manufacturer" class="control-label">
 		<g:message code="registeredDrones.manufacturer.label" default="Manufacturer" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="manufacturer" required="" value="${registeredDronesInstance?.manufacturer}"/>
+	<g:textField class="form-control" name="manufacturer" required="" value="${registeredDronesInstance?.manufacturer}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'nationalityManufacturer', 'error')} ">
-	<label for="nationalityManufacturer">
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'nationalityManufacturer', 'error')} form-group">
+	<label for="nationalityManufacturer" class="control-label">
 		<g:message code="registeredDrones.nationalityManufacturer.label" default="Nationality Manufacturer" />
 		
 	</label>
-	<g:textField name="nationalityManufacturer" value="${registeredDronesInstance?.nationalityManufacturer}"/>
+	<g:textField class="form-control" name="nationalityManufacturer" value="${registeredDronesInstance?.nationalityManufacturer}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'capacity', 'error')} required">
-	<label for="capacity">
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'capacity', 'error')} required form-group">
+	<label for="capacity" class="control-label">
 		<g:message code="registeredDrones.capacity.label" default="Capacity" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="capacity" value="${fieldValue(bean: registeredDronesInstance, field: 'capacity')}" required=""/>
+	<g:field class="form-control" name="capacity" value="${fieldValue(bean: registeredDronesInstance, field: 'capacity')}" required=""/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'maxWeight', 'error')} required">
-	<label for="maxWeight">
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'maxWeight', 'error')} required form-group">
+	<label for="maxWeight" class="control-label">
 		<g:message code="registeredDrones.maxWeight.label" default="Max Weight" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="maxWeight" value="${fieldValue(bean: registeredDronesInstance, field: 'maxWeight')}" required=""/>
+	<g:field class="form-control" name="maxWeight" value="${fieldValue(bean: registeredDronesInstance, field: 'maxWeight')}" required=""/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'powerplant', 'error')} required">
-	<label for="powerplant">
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'powerplant', 'error')} required form-group">
+	<label for="powerplant" class="control-label">
 		<g:message code="registeredDrones.powerplant.label" default="Powerplant" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="powerplant" required="" value="${registeredDronesInstance?.powerplant}"/>
+	<g:textField class="form-control" name="powerplant" required="" value="${registeredDronesInstance?.powerplant}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'maxSpeed', 'error')} required">
-	<label for="maxSpeed">
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'maxSpeed', 'error')} required form-group">
+	<label for="maxSpeed" class="control-label">
 		<g:message code="registeredDrones.maxSpeed.label" default="Max Speed" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="maxSpeed" value="${fieldValue(bean: registeredDronesInstance, field: 'maxSpeed')}" required=""/>
+	<g:field class="form-control" name="maxSpeed" value="${fieldValue(bean: registeredDronesInstance, field: 'maxSpeed')}" required=""/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'combatRadius', 'error')} required">
-	<label for="combatRadius">
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'combatRadius', 'error')} required form-group">
+	<label for="combatRadius" class="control-label">
 		<g:message code="registeredDrones.combatRadius.label" default="Combat Radius" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="combatRadius" value="${fieldValue(bean: registeredDronesInstance, field: 'combatRadius')}" required=""/>
+	<g:field class="form-control" name="combatRadius" value="${fieldValue(bean: registeredDronesInstance, field: 'combatRadius')}" required=""/>
 
 </div>
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'imagePath', 'error')} required">
-	<label for="imagePath">
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'imagePath', 'error')} required form-group">
+	<label for="imagePath" class="control-label">
 		<g:message code="registeredDrones.imagePath.label" default="Image" />
 	</label>
 	<input type="file" name="filecsv"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'droneArmament', 'error')} ">
-	<label for="droneArmament">
-		<g:message code="registeredDrones.droneArmament.label" default="Drone Armament" />
-		
-	</label>
-	
-<ul class="one-to-many">
-<g:each in="${registeredDronesInstance?.droneArmament?}" var="d">
-    <li><g:link controller="droneArmament" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="droneArmament" action="create" params="['registeredDrones.id': registeredDronesInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'droneArmament.label', default: 'DroneArmament')])}</g:link>
-</li>
-</ul>
+<div class="fieldcontain ${hasErrors(bean: registeredDronesInstance, field: 'droneArmament', 'error')} form-group">
+    <label for="droneArmament" class="control-label">
+            <g:message code="registeredDrones.droneArmament.label" default="Drone Armament" />
 
-
+    </label>
+    <ul class="one-to-many">
+        <g:each in="${registeredDronesInstance?.droneArmament?}" var="d">
+            <li><g:link controller="droneArmament" action="show" id="${d.id}">${d?.encodeAsHTML()}</g:link></li>
+        </g:each>        
+        <li class="add">
+            <g:link class="btn btn-default" controller="droneArmament" action="create" params="['registeredDrones.id': registeredDronesInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'droneArmament.label', default: 'DroneArmament')])}</g:link>
+        </li>
+    </ul>
 </div>
-

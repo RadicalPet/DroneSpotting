@@ -4,7 +4,7 @@
         <title><g:message code="springSecurity.login.title"/></title>
     </head>
     <body>
-        <div class="container v-offset" id="login">
+        <div class="v-offset" id="login">
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
                     <div class="panel">
