@@ -1,4 +1,3 @@
-
 <%@ page import="dronespotting.Articles" %>
 <!DOCTYPE html>
 <html>
