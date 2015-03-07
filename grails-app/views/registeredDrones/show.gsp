@@ -8,7 +8,6 @@
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-        
         <div class="container v-offset">
             <div class="row">
                 <div class="col-md-12">

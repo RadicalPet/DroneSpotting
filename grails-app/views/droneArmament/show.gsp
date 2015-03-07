@@ -24,10 +24,10 @@
                                 <div class='alert alert-info'>${flash.message}</div>
                             </g:if>
                             <g:form url="[resource:droneArmamentInstance, action:'delete']" method="DELETE">
-                                <fieldset class="buttons">
+                                <div class="form-group">
                                     <g:link class="btn btn-default" action="edit" resource="${droneArmamentInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                                     <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                                </fieldset>
+                                </div>
                             </g:form>
                             <table class="table table-hover table-striped">
                                 <tbody>
