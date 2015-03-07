@@ -19,7 +19,7 @@ environments {
     development {
         dataSource {
             dbCreate = "none"
-            url = "jdbc:mysql://localhost/drone_spotting?useUnicode=yes&characterEncoding=UTF-8"
+            url = "jdbc:mysql://localhost/drone_spotting_view?useUnicode=yes&characterEncoding=UTF-8"
             driverClassName = "com.mysql.jdbc.Driver" 
             username = "root"
             password = "12ZellKoll8"
