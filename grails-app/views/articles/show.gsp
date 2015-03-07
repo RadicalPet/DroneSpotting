@@ -41,14 +41,14 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${articlesInstance?.content}">
+				
 				<li class="fieldcontain">
 					<span id="content-label" class="property-label"><g:message code="articles.content.label" default="Content" /></span>
 					
-						<span class="property-value" aria-labelledby="content-label"><g:fieldValue bean="${articlesInstance}" field="content"/></span>
+						<span class="property-value" aria-labelledby="content-label">${raw(articlesInstance?.content)}</span>
 					
 				</li>
-				</g:if>
+				
 			
 				<g:if test="${articlesInstance?.published}">
 				<li class="fieldcontain">

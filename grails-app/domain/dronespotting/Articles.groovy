@@ -14,6 +14,6 @@ class Articles {
         title (blank: false)
         content (type: 'longtext', blank: true, nullable: true)
         published()
-        isPublished()
+        isPublished(default : false)
     }
 }

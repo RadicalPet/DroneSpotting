@@ -1,5 +1,6 @@
 
 <%@ page import="dronespotting.Articles" %>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -44,7 +45,7 @@
 					
 						<td>${fieldValue(bean: articlesInstance, field: "title")}</td>
 					
-						<td>${fieldValue(bean: articlesInstance, field: "content")}</td>
+						<td>${raw(articlesInstance.content)}</td>
 					
 						<td><g:formatDate date="${articlesInstance.published}" /></td>
 					

@@ -18,6 +18,9 @@ class ArticlesController {
     def show(Articles articlesInstance) {
         respond articlesInstance
     }
+    def test(){
+        [test: "<h1>Hi</h1>"]
+    }
 
     def create() {
         respond new Articles(params)

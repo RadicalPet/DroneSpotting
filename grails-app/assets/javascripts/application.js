@@ -9,7 +9,7 @@
 //= require bootstrap
 //= require jquery-1.11.1.min
 //= require jquery-ui.min
-//= require ../ckeditor/ckeditor
+//= require ../ckeditor
 //= require_self
 
 if (typeof jQuery !== 'undefined') {
