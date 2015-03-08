@@ -18,12 +18,15 @@ class MemberArticlesController {
     def show(Articles articlesInstance) {
         respond articlesInstance
     }
-    def test(){
-        [test: "<h1>Hi</h1>"]
+    def showUnpublished(Articles articlesInstance) {
+        respond articlesInstance
     }
-
     def create() {
         respond new Articles(params)
+    }
+    def unpublished(Integer max){
+        def results = Articles.findAllByIsPublished(false)
+        [articlesInstanceList: results, articlesInstanceTotal: Articles.count()]
     }
 
     @Transactional
@@ -43,7 +46,7 @@ class MemberArticlesController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'articles.label', default: 'Articles'), articlesInstance.id])
-                redirect articlesInstance
+                redirect(controller: "memberArticles", action: "showUnpublished", id: articlesInstance.id)
             }
             '*' { respond articlesInstance, [status: CREATED] }
         }
@@ -70,7 +73,7 @@ class MemberArticlesController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Articles.label', default: 'Articles'), articlesInstance.id])
-                redirect articlesInstance
+                redirect(controller: "memberArticles", action: "showUnpublished", id: articlesInstance.id)
             }
             '*'{ respond articlesInstance, [status: OK] }
         }
@@ -89,7 +92,7 @@ class MemberArticlesController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Articles.label', default: 'Articles'), articlesInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action:"unpublished", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
         }
