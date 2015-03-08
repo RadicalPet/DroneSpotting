@@ -22,22 +22,7 @@
                             <g:if test="${flash.message}">
                                 <div class="message" role="status">${flash.message}</div>
                             </g:if>
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th><g:message code="droneArmament.registeredArms.label" default="Registered Arms" /></th>
-                                        <th><g:message code="droneArmament.registeredDrones.label" default="Registered Drones" /></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <g:each in="${droneArmamentInstanceList}" status="i" var="droneArmamentInstance">
-                                        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                                            <td><g:link action="show" id="${droneArmamentInstance.id}">${fieldValue(bean: droneArmamentInstance, field: "registeredArms")}</g:link></td>
-                                            <td>${fieldValue(bean: droneArmamentInstance, field: "registeredDrones")}</td>
-                                        </tr>
-                                    </g:each>
-                                </tbody>
-                            </table>
+                            <g:render template="list"/>
                             <div class="pagination">
                                 <g:paginate total="${droneArmamentInstanceCount ?: 0}" />
                             </div>
