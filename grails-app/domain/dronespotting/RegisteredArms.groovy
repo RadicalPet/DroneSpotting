@@ -4,11 +4,11 @@ class RegisteredArms {
     
     String model
     String category        
-    Double length
-    Double weight      
+    BigDecimal length
+    BigDecimal weight      
     String warhead
-    Double diameter
-    Double range
+    BigDecimal diameter
+    BigDecimal weaponsRange
     String guidance
     
     static hasMany = [droneArmament:DroneArmament]
@@ -21,7 +21,7 @@ class RegisteredArms {
         weight (blank: true)      
         warhead (blank: true)
         diameter (blank: true)
-        range (blank: true)
+        weaponsRange (blank: true)
         guidance (blank: true)
     }
 }

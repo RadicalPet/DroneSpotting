@@ -73,10 +73,10 @@
                                         </tr>
                                     </g:if>
                                 
-                                    <g:if test="${registeredArmsInstance?.range}">
+                                    <g:if test="${registeredArmsInstance?.weaponsRange}">
                                         <tr>
-                                            <td><g:message code="registeredArms.range.label" default="Range" /></td>
-                                            <td><g:fieldValue bean="${registeredArmsInstance}" field="range"/></td>
+                                            <td><g:message code="registeredArms.weaponsRange.label" default="Weapons Range" /></td>
+                                            <td><g:fieldValue bean="${registeredArmsInstance}" field="weaponsRange"/></td>
                                         </tr>
                                     </g:if>
                                 
