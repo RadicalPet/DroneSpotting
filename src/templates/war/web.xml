@@ -34,8 +34,12 @@
         <filter-name>charEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-         <!-- Add the following lines: -->
+        <!-- Add the following lines: -->
 
+    <!--<listener>
+        <listener-class>dronespotting.ChatroomEndpoint</listener-class>
+    </listener>
+-->
     <listener>
         <listener-class>org.codehaus.groovy.grails.web.context.GrailsContextLoaderListener</listener-class>
     </listener>

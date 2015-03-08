@@ -17,7 +17,9 @@ import javax.websocket.server.ServerEndpoint
 @ServerEndpoint("/chatroom")
 @WebListener
 class ChatroomEndpoint implements ServletContextListener {
-
+    
+  def grailsApplication
+    
   private static final Logger log = Logger.getLogger(ChatroomEndpoint.class)
   private static final Set<Session> users = ([] as Set).asSynchronized()
 

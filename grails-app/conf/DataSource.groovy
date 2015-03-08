@@ -24,8 +24,8 @@ environments {
             username = "root"
             password = "12ZellKoll8"
             pooled = "true"
-            logSql = true
-            loggoíngSql = true
+            //logSql = true
+            //loggoíngSql = true
             
         }
     }
