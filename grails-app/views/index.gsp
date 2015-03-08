@@ -17,11 +17,14 @@
             $(function() {
             
                var items = [];
+               
+               $('#loading').show();
                 
                 $.getJSON("http://api.dronestre.am/data?callback=?", function(response) {
                     handleData(response);
                     makeTheme();
-                    getData();                       
+                    getData();
+                    $('#loading').hide();
                 });
                 
                 function handleData(data) {
@@ -43,7 +46,7 @@
                                 deaths: obj.deaths_min,
                                 civilians: obj.civilians,
                                 url: obj.bij_link,
-                                impact: parseInt(obj.deaths_min/3),
+                                impact: parseInt(obj.deaths_min/3) || parseInt(Math.random()*5),
                                 scale: parseInt(Math.random()*10),
                                 description: obj.bij_summary_short
                             },
@@ -106,6 +109,10 @@
     </head>
     <body>
         <div id="page-body" role="main">
+            <div id="loading">
+                <i class="fa fa-rocket fa-4x animated"></i>
+                <h1>Deploying awesomeness...</h1>
+            </div>
             <div id="timemap">
                 <div id="timelinecontainer">
                     <div id="timeline"></div>
