@@ -54,12 +54,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: registeredArmsInstance, field: 'range', 'error')} required form-group">
-    <label for="range" class="control-label">
-        <g:message code="registeredArms.range.label" default="Range" />
+<div class="fieldcontain ${hasErrors(bean: registeredArmsInstance, field: 'weaponsRange', 'error')} required form-group">
+    <label for="weaponsRange" class="control-label">
+        <g:message code="registeredArms.weaponsRange.label" default="Weapons Range" />
         <span class="required-indicator">*</span>
     </label>
-    <g:field class="form-control" name="range" value="${fieldValue(bean: registeredArmsInstance, field: 'range')}" required=""/>
+    <g:field class="form-control" name="weaponsRange" value="${fieldValue(bean: registeredArmsInstance, field: 'weaponsRange')}" required=""/>
 
 </div>
 

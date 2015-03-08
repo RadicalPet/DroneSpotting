@@ -1,10 +1,11 @@
 package dronespotting
-import grails.plugin.springsecurity.annotation.Secured
+
+
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-
-@Secured(['permitAll'])
+import grails.plugin.springsecurity.annotation.Secured
+@Secured(['ROLE_ADMIN'])
 @Transactional(readOnly = true)
 class RegisteredArmsController {
 
@@ -18,11 +19,11 @@ class RegisteredArmsController {
     def show(RegisteredArms registeredArmsInstance) {
         respond registeredArmsInstance
     }
-    @Secured(['ROLE_ADMIN', 'ROLE_MEMBER'])
+
     def create() {
         respond new RegisteredArms(params)
     }
-    @Secured(['ROLE_ADMIN', 'ROLE_MEMBER'])
+
     @Transactional
     def save(RegisteredArms registeredArmsInstance) {
         if (registeredArmsInstance == null) {
@@ -45,11 +46,11 @@ class RegisteredArmsController {
             '*' { respond registeredArmsInstance, [status: CREATED] }
         }
     }
-    @Secured(['ROLE_ADMIN', 'ROLE_MEMBER'])
+
     def edit(RegisteredArms registeredArmsInstance) {
         respond registeredArmsInstance
     }
-    @Secured(['ROLE_ADMIN', 'ROLE_MEMBER'])
+
     @Transactional
     def update(RegisteredArms registeredArmsInstance) {
         if (registeredArmsInstance == null) {
@@ -72,7 +73,7 @@ class RegisteredArmsController {
             '*'{ respond registeredArmsInstance, [status: OK] }
         }
     }
-    @Secured(['ROLE_ADMIN', 'ROLE_MEMBER'])
+
     @Transactional
     def delete(RegisteredArms registeredArmsInstance) {
 
