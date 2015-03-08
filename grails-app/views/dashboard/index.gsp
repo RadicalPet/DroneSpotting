@@ -1,4 +1,3 @@
-<%@ page import="dronespotting.RegisteredDrones" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -53,11 +52,62 @@
                     </div>  
                 </div>
                 <div class="col-md-8">
-                    <div class="panel">
-                        <div class="panel-heading panel-info">
-                            <h4 class="panel-title"></h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading panel-info">
+                                    <h4 class="panel-title"><g:link controller="RegisteredDrones">Registered Drones</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/registeredDrones/list"/>
+                                </div>
+                            </div>
                         </div>
-                        <div class="panel-body">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading panel-danger">
+                                    <h4 class="panel-title"><g:link controller="RegisteredArms">Registered Arms</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/registeredArms/list"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-heading panel-warning">
+                                    <h4 class="panel-title"><g:link controller="DroneArmament">Drone Armament</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/droneArmament/list"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-heading panel-success">
+                                    <h4 class="panel-title"><g:link controller="UserRole">User Roles</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/userRole/list"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-heading panel-info">
+                                    <h4 class="panel-title"><g:link controller="Role">Available Roles</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/role/list"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
