@@ -110,7 +110,8 @@
     <body>
         <div id="page-body" role="main">
             <div id="loading">
-                <i class="fa fa-refresh fa-3x fa-spin"></i>
+                <i class="fa fa-rocket fa-4x animated"></i>
+                <h1>Deploying awesomeness...</h1>
             </div>
             <div id="timemap">
                 <div id="timelinecontainer">
