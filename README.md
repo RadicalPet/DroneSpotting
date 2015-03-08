@@ -4,8 +4,8 @@ School project built with Groovy on Grails.
 
 Contributors:
 
-[RadicalPet](https://github.com/RadicalPet)
-[andreiho](https://github.com/andreiho)
+- [RadicalPet](https://github.com/RadicalPet)
+- [andreiho](https://github.com/andreiho)
 
 ## Requirements ##
 
