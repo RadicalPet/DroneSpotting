@@ -15,5 +15,6 @@ stacktrace.log
 /.link_to_grails_plugins/
 /target-eclipse/
 /grails-app/conf/DataSources.groovy
+/grails-app/conf/DataSource.groovy
 /target/
 /grails-app/migrations/changelog.groovy

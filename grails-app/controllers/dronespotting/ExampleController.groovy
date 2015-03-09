@@ -10,10 +10,9 @@ class ExampleController {
 
     def index() {}
 
-    @MessageMapping("/hello")
-    @SendTo("/topic/hello")
-    protected String hello(String world) {
-        return "hello from controller, ${world}!"
-    }
-
+    //@MessageMapping("/hello")
+    //@SendTo("/topic/hello")
+    //protected String hello(String world) {
+    //    return "${world}!"
+    //}
 }
