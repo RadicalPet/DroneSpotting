@@ -47,49 +47,19 @@
                         <div class="panel-heading panel-danger">
                             <h4 class="panel-title">Chat</h4>
                         </div>
-                        <div class="panel-body">
+                        <div class="panel-body" id="chatContainer">
                            <div class="row message-container received">
                                 <div class="message">
-                                    <h1 class="user">Sarah</h1>
+                                    <h1 class="user" id="loggedInUser">Sarah</h1>
                                     <p class="text">Best. Article. Ever</p>
-                                </div>
-                           </div>
-                           <div class="row message-container sent">
-                                <div class="message">
-                                    <h1 class="user">You</h1>
-                                    <p class="text">You idiots..</p>
-                                </div>
-                           </div>
-                            <div class="row message-container received">
-                                <div class="message">
-                                    <h1 class="user">Bruno</h1>
-                                    <p class="text">Stop it. You're doing it wrong!</p>
-                                </div>
-                           </div>
-                           <div class="row message-container received">
-                                <div class="message">
-                                    <h1 class="user">John</h1>
-                                    <p class="text">Shut up Bruno, you've been fucking up this article ever since we started it.</p>
-                                </div>
-                           </div>
-                           <div class="row message-container received">
-                                <div class="message">
-                                    <h1 class="user">John</h1>
-                                    <p class="text">Get outta here.</p>
-                                </div>
-                           </div>
-                           <div class="row message-container received">
-                                <div class="message">
-                                    <h1 class="user">Sarah</h1>
-                                    <p class="text">Oh God what did I get into.</p>
                                 </div>
                            </div>
                         </div>
                         <div class="panel-footer">
                             <div class="input-group">
-                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Write your message..." />
+                                <input id="btn-input" id="writeMessage" type="text" class="form-control input-sm" placeholder="Write your message..." />
                                 <span class="input-group-btn">
-                                <button class="btn btn-danger btn-sm" id="btn-chat">Send</button>
+                                <button class="btn btn-danger btn-sm" id="sendMessage">Send</button>
                                 </span>
                             </div>
                         </div>
