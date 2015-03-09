@@ -7,74 +7,38 @@
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
-        <a href="#show-articles" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-        <div class="nav" role="navigation">
-            <ul>
-                <li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-                <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                </ul>
+        <div class="container v-offset">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading panel-default">
+                            <h4 class="panel-title">
+                                <g:if test="${articlesInstance?.title}">
+                                        <g:fieldValue bean="${articlesInstance}" field="title"/>
+                                </g:if>
+                            </h4>
+                            <span class="pull-right panel-button">
+                                <g:link class="btn btn-success" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+                                <g:link class="btn btn-info" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <g:if test="${flash.message}">
+                                <div class="message" role="status">${flash.message}</div>
+                            </g:if>
+                            <g:form url="[resource:memberArticlesInstance, action:'delete', id:articlesInstance.id]" method="DELETE">
+                                <fieldset class="form-group">
+                                    <g:link class="btn btn-default" action="edit" id="${articlesInstance.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                                    <!--<g:submitButton name="delete" class="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />-->
+                                    <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                </fieldset>
+                            </g:form>
+                            <div class="article-time"><g:formatDate format="dd MMMM yyyy" date="${articlesInstance.published}" /></div>
+                            <div class="article-raw">${raw(articlesInstance?.content)}</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="show-articles" class="content scaffold-show" role="main">
-                <h1><g:message code="default.show.label" args="[entityName]" /></h1>
-            <g:if test="${flash.message}">
-                <div class="message" role="status">${flash.message}</div>
-            </g:if>
-            <ol class="property-list articles">
-
-                <g:if test="${articlesInstance?.strikeId}">
-                    <li class="fieldcontain">
-                        <span id="strikeId-label" class="property-label"><g:message code="articles.strikeId.label" default="Strike Id" /></span>
-
-                        <span class="property-value" aria-labelledby="strikeId-label"><g:fieldValue bean="${articlesInstance}" field="strikeId"/></span>
-
-                    </li>
-                </g:if>
-
-                <g:if test="${articlesInstance?.title}">
-                    <li class="fieldcontain">
-                        <span id="title-label" class="property-label"><g:message code="articles.title.label" default="Title" /></span>
-
-                        <span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${articlesInstance}" field="title"/></span>
-
-                    </li>
-                </g:if>
-
-
-                <li class="fieldcontain">
-                    <span id="content-label" class="property-label"><g:message code="articles.content.label" default="Content" /></span>
-
-                    <span class="property-value" aria-labelledby="content-label">${raw(articlesInstance?.content)}</span>
-
-                </li>
-
-
-                <g:if test="${articlesInstance?.published}">
-                    <li class="fieldcontain">
-                        <span id="published-label" class="property-label"><g:message code="articles.published.label" default="Published" /></span>
-
-                        <span class="property-value" aria-labelledby="published-label"><g:formatDate date="${articlesInstance?.published}" /></span>
-
-                    </li>
-                </g:if>
-
-                <g:if test="${articlesInstance?.isPublished}">
-                    <li class="fieldcontain">
-                        <span id="isPublished-label" class="property-label"><g:message code="articles.isPublished.label" default="Is Published" /></span>
-
-                        <span class="property-value" aria-labelledby="isPublished-label"><g:formatBoolean boolean="${articlesInstance?.isPublished}" /></span>
-
-                    </li>
-                </g:if>
-
-            </ol>
-            <g:form url="[resource:memberArticlesInstance, action:'delete', id:articlesInstance.id]" method="DELETE">
-                <fieldset class="buttons">
-                    <g:link class="edit" action="edit" id="${articlesInstance.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                    <!--<g:submitButton name="delete" class="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />-->
-                    <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </fieldset>
-            </g:form>
         </div>
     </body>
 </html>

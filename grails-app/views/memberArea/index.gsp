@@ -1,9 +1,3 @@
-<!--
-  To change this license header, choose License Headers in Project Properties.
-  To change this template file, choose Tools | Templates
-  and open the template in the editor.
--->
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <html>
@@ -11,6 +5,26 @@
         <meta name="layout" content="main">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Member Area</title>
+        
+        <asset:javascript src="jquery" />
+        <asset:javascript src="spring-websocket" />
+
+        <script type="text/javascript">
+            $(function() { 
+                var socket = new SockJS("${createLink(uri: '/stomp')}");
+                var client = Stomp.over(socket);
+
+                client.connect({}, function() {
+                    client.subscribe("/topic/hello", function(message) {
+                        $("#helloDiv").append(message.body);
+                    });
+                });
+
+                $("#helloButton").click(function() {
+                    client.send("/app/hello", {}, JSON.stringify("fuck you"));
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="container v-offset">

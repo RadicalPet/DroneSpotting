@@ -2,97 +2,111 @@
 <%@ page import="dronespotting.User" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#show-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-user" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list user">
-			
-				<g:if test="${userInstance?.username}">
-				<li class="fieldcontain">
-					<span id="username-label" class="property-label"><g:message code="user.username.label" default="Username" /></span>
-					
-						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${userInstance}" field="username"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.password}">
-				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="user.password.label" default="Password" /></span>
-					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${userInstance}" field="password"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.email}">
-				<li class="fieldcontain">
-					<span id="email-label" class="property-label"><g:message code="user.email.label" default="Email" /></span>
-					
-						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${userInstance}" field="email"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.accountExpired}">
-				<li class="fieldcontain">
-					<span id="accountExpired-label" class="property-label"><g:message code="user.accountExpired.label" default="Account Expired" /></span>
-					
-						<span class="property-value" aria-labelledby="accountExpired-label"><g:formatBoolean boolean="${userInstance?.accountExpired}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.accountLocked}">
-				<li class="fieldcontain">
-					<span id="accountLocked-label" class="property-label"><g:message code="user.accountLocked.label" default="Account Locked" /></span>
-					
-						<span class="property-value" aria-labelledby="accountLocked-label"><g:formatBoolean boolean="${userInstance?.accountLocked}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.enabled}">
-				<li class="fieldcontain">
-					<span id="enabled-label" class="property-label"><g:message code="user.enabled.label" default="Enabled" /></span>
-					
-						<span class="property-value" aria-labelledby="enabled-label"><g:formatBoolean boolean="${userInstance?.enabled}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.passwordExpired}">
-				<li class="fieldcontain">
-					<span id="passwordExpired-label" class="property-label"><g:message code="user.passwordExpired.label" default="Password Expired" /></span>
-					
-						<span class="property-value" aria-labelledby="passwordExpired-label"><g:formatBoolean boolean="${userInstance?.passwordExpired}" /></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form url="[resource:userInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${userInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
+    <head>
+        <meta name="layout" content="main">
+        <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
+        <title><g:message code="default.show.label" args="[entityName]" /></title>
+    </head>
+    <body>
+        <div class="container v-offset">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel">
+                        <div class="panel-heading panel-default">
+                            <h4 class="panel-title"><g:fieldValue bean="${userInstance}" field="username"/></h4>
+                            <span class="pull-right panel-button">
+                                <g:link class="btn btn-success" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+                                <g:link class="btn btn-info" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <g:if test='${flash.message}'>
+                                <div class='alert alert-info'>${flash.message}</div>
+                            </g:if>
+                            <g:form url="[resource:userInstance, action:'delete']" method="DELETE">
+                                <div class="form-group">
+                                    <g:link class="btn btn-default" action="edit" resource="${userInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                                    <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                </div>
+                            </g:form>
+                            <table class="table table-hover table-striped">
+                                <tbody>
+                                    <g:if test="${userInstance?.username}">
+                                        <tr>
+                                            <td>
+                                                <g:message code="user.username.label" default="Username" />
+                                            </td>
+                                            <td>
+                                                <g:fieldValue bean="${userInstance}" field="username"/>
+                                            </td>
+                                        </tr>
+                                    </g:if>
+                                    <g:if test="${userInstance?.password}">
+                                        <tr>
+                                            <td>
+                                                <g:message code="user.password.label" default="Password" />
+                                            </td>
+                                            <td>
+                                                <g:fieldValue bean="${userInstance}" field="password"/>
+                                            </td>
+                                        </tr>
+                                    </g:if>
+                                    <g:if test="${userInstance?.email}">
+                                        <tr>
+                                            <td>
+                                                <g:message code="user.email.label" default="Email" />
+                                            </td>
+                                            <td>
+                                                <g:fieldValue bean="${userInstance}" field="email"/>
+                                            </td>
+                                        </tr>
+                                    </g:if>
+                                    <g:if test="${userInstance?.accountExpired}">
+                                        <tr>
+                                            <td>
+                                                <g:message code="user.accountExpired.label" default="Account Expired" />
+                                            </td>
+                                            <td>
+                                                <g:formatBoolean boolean="${userInstance?.accountExpired}" />
+                                            </td>
+                                        </tr>
+                                    </g:if>
+                                    <g:if test="${userInstance?.accountLocked}">
+                                        <tr>
+                                            <td>
+                                                <g:message code="user.accountLocked.label" default="Account Locked" />
+                                            </td>
+                                            <td>
+                                                <g:formatBoolean boolean="${userInstance?.accountLocked}" />
+                                            </td>
+                                        </tr>
+                                    </g:if>
+                                    <g:if test="${userInstance?.enabled}">
+                                        <tr>
+                                            <td>
+                                                <g:message code="user.enabled.label" default="Enabled" />
+                                            </td>
+                                            <td>
+                                                <g:formatBoolean boolean="${userInstance?.enabled}" />
+                                            </td>
+                                        </tr>
+                                    </g:if>
+                                    <g:if test="${userInstance?.passwordExpired}">
+                                        <tr>
+                                            <td>
+                                                <g:message code="user.passwordExpired.label" default="Password Expired" />
+                                            </td>
+                                            <td>
+                                                <g:formatBoolean boolean="${userInstance?.passwordExpired}" />
+                                            </td>
+                                        </tr>
+                                    </g:if>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
