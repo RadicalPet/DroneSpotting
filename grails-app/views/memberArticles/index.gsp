@@ -25,32 +25,33 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="strikeId" title="${message(code: 'articles.strikeId.label', default: 'Strike Id')}" />
-					
 						<g:sortableColumn property="title" title="${message(code: 'articles.title.label', default: 'Title')}" />
 					
 						<g:sortableColumn property="content" title="${message(code: 'articles.content.label', default: 'Content')}" />
 					
 						<g:sortableColumn property="published" title="${message(code: 'articles.published.label', default: 'Published')}" />
-					
+					                                                
+                                                <g:sortableColumn property="strikeId" title="${message(code: 'articles.strikeId.label', default: 'Strike Id')}" />
+
 						<g:sortableColumn property="isPublished" title="${message(code: 'articles.isPublished.label', default: 'Is Published')}" />
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${articlesInstanceList}" status="i" var="articlesInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${articlesInstance.id}">${fieldValue(bean: articlesInstance, field: "strikeId")}</g:link></td>
 					
-						<td>${fieldValue(bean: articlesInstance, field: "title")}</td>
+						<td><g:link action="show" id="${articlesInstance.id}">${fieldValue(bean: articlesInstance, field: "title")}</g:link></td>
 					
 						<td>${raw(articlesInstance.content)}</td>
 					
 						<td><g:formatDate date="${articlesInstance.published}" /></td>
+					                                                
+                                                <td>${fieldValue(bean: articlesInstance, field: "strikeId")}</td>
 					
-						<td><g:formatBoolean boolean="${articlesInstance.isPublished}" /></td>
-					
+                                                <td><g:formatBoolean boolean="${articlesInstance.isPublished}" /></td>
+
 					</tr>
 				</g:each>
 				</tbody>

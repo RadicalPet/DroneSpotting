@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ page import="dronespotting.RegisteredDrones" %>
 <html>
     <head>
         <meta name="layout" content="main"/>

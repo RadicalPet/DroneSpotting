@@ -24,8 +24,8 @@ class RegisteredDronesController {
     def search() {
             
         def results = RegisteredDrones.findAllByModelIlike("%"+params.query+"%")
-         [registeredDronesInstanceList: results, registeredDronesInstanceTotal: RegisteredDrones.count()]
-        //[hey: result.model]       
+        [registeredDronesInstanceList: results, registeredDronesInstanceTotal: RegisteredDrones.count()]
+             
     }
 
     def show(RegisteredDrones registeredDronesInstance) {

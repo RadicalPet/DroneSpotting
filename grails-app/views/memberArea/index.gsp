@@ -11,6 +11,26 @@
         <meta name="layout" content="main">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Member Area</title>
+        
+        <asset:javascript src="jquery" />
+        <asset:javascript src="spring-websocket" />
+
+        <script type="text/javascript">
+            $(function() { 
+                var socket = new SockJS("${createLink(uri: '/stomp')}");
+                var client = Stomp.over(socket);
+
+                client.connect({}, function() {
+                    client.subscribe("/topic/hello", function(message) {
+                        $("#helloDiv").append(message.body);
+                    });
+                });
+
+                $("#helloButton").click(function() {
+                    client.send("/app/hello", {}, JSON.stringify("fuck you"));
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="container v-offset">
@@ -36,5 +56,7 @@
                 </div>
             </div>
         </div>
+        <button id="helloButton">hello</button>
+        <div id="helloDiv"></div>
     </body>
 </html>
