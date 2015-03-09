@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@ page import="dronespotting.RegisteredDrones" %>
 <html>
     <head>
         <meta name="layout" content="main"/>
@@ -53,6 +52,18 @@
                     </div>  
                 </div> 
                 <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading panel-info">
+                                    <h4 class="panel-title"><g:link controller="User">Users</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/user/list"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel">

@@ -3,7 +3,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import gorm.recipes.*
 import dronespotting.RegisteredDrones
 import dronespotting.RegisteredArms
-
+import dronespotting.User
 
 @Secured(['ROLE_ADMIN'])
 class DashboardController {
@@ -31,5 +31,9 @@ class DashboardController {
         
         // get user roles
         respond UserRole.list(params), model:[userRoleInstanceCount: UserRole.count()]
+        
+        // get users
+        respond User.list(params), model:[userInstanceCount: User.count()]
+        
     }
 }
