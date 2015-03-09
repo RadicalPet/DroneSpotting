@@ -14,21 +14,22 @@
                 var client = Stomp.over(socket);
                 var chatMessage = new Object();
                 
-                
                 client.connect({}, function() {
                     client.subscribe("/topic/hello", function(chatMessage) {
+                        console.log(chatMessage);
                         var message = chatMessage.body;
                         message = decodeURIComponent(message);
                         var newString = message.substring(1);
                         newString = newString.substring(0, newString.length - 1);
                         message = JSON.parse(newString);
-                        $("#chatContainer").append(' <div class="row message-container received"> ' +
-                                                        ' <div class="message"> ' +
-                                                           ' <div class="user" id="loggedInUser"> ' + message.username + ' </div> ' +
-                                                           ' <p class="text"> ' + message.message + ' </p> ' +
-                                                        ' </div> ' +
+                        if (message.articleID == $("#articleID").val()){
+                            $("#chatContainer").append(' <div class="row message-container received"> ' +
+                                                   ' <div class="message"> ' +
+                                                   ' <div class="user" id="loggedInUser"> ' + message.username + ' </div> ' +
+                                                   ' <p class="text"> ' + message.message + ' </p> ' +
+                                                   ' </div> ' +
                                                    ' </div> ');
-                        
+                        }
                     });
                 });
 
@@ -36,16 +37,22 @@
                     var chatMessage = new Object();
                     chatMessage.message =  $("#writeMessage").val();
                     $("#writeMessage").val("");
-                    console.log(chatMessage.message);
+                    chatMessage.articleID = $("#articleID").val();
                     chatMessage.username = $("#loggedInUser").text();
                     var messageStringified = JSON.stringify(chatMessage);
                     var messageEncoded = encodeURIComponent(messageStringified);
                     client.send("/app/hello", {}, JSON.stringify(messageEncoded));
                 });
+                $.getJSON("/DroneSpotting/JSON/test", function(json) {
+                    localStorage.editData = JSON.stringify(json);
+                });
+                
+                
             });
         </script>
     </head>
     <body>
+        <g:hiddenField name="id"  id="articleID" value="$articlesInstance.id" />
         <div class="container v-offset">
             <div class="row">
                 <div class="col-md-9">
@@ -68,6 +75,7 @@
                                         </g:eachError>
                                 </ul>
                             </g:hasErrors>
+                            
                             <g:form url="[resource:memberArticlesInstance, action:'update'], id:articlesInstance.id" method="PUT" >
                                 <g:hiddenField name="version" value="${articlesInstance?.version}" />
                                 <fieldset class="form">

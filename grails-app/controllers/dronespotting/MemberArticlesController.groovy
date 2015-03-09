@@ -2,11 +2,12 @@ package dronespotting
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import org.apache.commons.io.FileUtils;
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.messaging.handler.annotation.SendTo
 
-@Secured(['ROLE_MEMBER'])
+@Secured(['ROLE_MEMBER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
 class MemberArticlesController {
 
@@ -16,7 +17,6 @@ class MemberArticlesController {
         params.max = Math.min(max ?: 10, 100)
         respond Articles.list(params), model:[articlesInstanceCount: Articles.count()]
     }
-
     def show(Articles articlesInstance) {
         respond articlesInstance
     }
@@ -29,6 +29,9 @@ class MemberArticlesController {
     def unpublished(Integer max){
         def results = Articles.findAllByIsPublished(false)
         [articlesInstanceList: results, articlesInstanceTotal: Articles.count()]
+    }
+    def test(){
+        writeToFile("hm", "hm")
     }
 
     @Transactional
@@ -109,9 +112,17 @@ class MemberArticlesController {
             '*'{ render status: NOT_FOUND }
         }
     }
+    protected void writeToFile(data, filename) {
+
+        def fileStore = new File( servletContext.getRealPath("../")+"/grails-app/views/JSON/"+filename+".gsp");
+        fileStore.createNewFile();
+        FileUtils.writeStringToFile(fileStore, data);
+    }
     @MessageMapping("/hello")
     @SendTo("/topic/hello")
     protected String hello(String chatMessage) {
+        String result = java.net.URLDecoder.decode(chatMessage, "UTF-8");
+        writeToFile(result, "bla")
         return "${chatMessage}"
     }
 }

@@ -13,15 +13,18 @@ class BootStrap {
         if (!user1.authorities.contains(memberRole)){
             UserRole.create user1, memberRole, true
         }
+        def user3 = User.findByUsername('hans') ?: new User(username: 'hans', enabled: true, password: 'hansboy', email: 'hans@gmail.com').save(failOnError: true)
+    
+        if (!user3.authorities.contains(memberRole)){
+            UserRole.create user3, memberRole, true
+        }
+    
     
         def user2 = User.findByUsername('admin') ?: new User(username: 'admin', enabled: true, password: 'adminadmin', email: 'admin@gmail.com').save(failOnError: true)
         if (!user2.authorities.contains(adminRole)){
             UserRole.create user2, adminRole, true
         }
         
-        //assert User.count() == 2
-        assert Role.count() == 2
-        //assert UserRole.count == 3
     }
     def destroy = {
     }
