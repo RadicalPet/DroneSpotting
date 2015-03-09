@@ -22,7 +22,12 @@
                         var newString = message.substring(1);
                         newString = newString.substring(0, newString.length - 1);
                         message = JSON.parse(newString);
-                        $("chatContainer").append(message.username);
+                        $("#chatContainer").append(' <div class="row message-container received"> ' +
+                                                        ' <div class="message"> ' +
+                                                           ' <div class="user" id="loggedInUser"> ' + message.username + ' </div> ' +
+                                                           ' <p class="text"> ' + message.message + ' </p> ' +
+                                                        ' </div> ' +
+                                                   ' </div> ');
                         
                     });
                 });
@@ -30,11 +35,12 @@
                 $("#sendMessage").click(function() {
                     var chatMessage = new Object();
                     chatMessage.message =  $("#writeMessage").val();
+                    $("#writeMessage").val("");
+                    console.log(chatMessage.message);
                     chatMessage.username = $("#loggedInUser").text();
                     var messageStringified = JSON.stringify(chatMessage);
                     var messageEncoded = encodeURIComponent(messageStringified);
                     client.send("/app/hello", {}, JSON.stringify(messageEncoded));
-                
                 });
             });
         </script>
@@ -80,16 +86,10 @@
                             <h4 class="panel-title">Chat</h4>
                         </div>
                         <div class="panel-body" id="chatContainer">
-                           <div class="row message-container received">
-                                <div class="message">
-                                    <h1 class="user" id="loggedInUser">Sarah</h1>
-                                    <p class="text">Best. Article. Ever</p>
-                                </div>
-                           </div>
                         </div>
                         <div class="panel-footer">
                             <div class="input-group">
-                                <input id="btn-input" id="writeMessage" type="text" class="form-control input-sm" placeholder="Write your message..." />
+                                <input id="writeMessage" type="text" class="form-control input-sm" placeholder="Write your message..." />
                                 <span class="input-group-btn">
                                 <button class="btn btn-danger btn-sm" id="sendMessage">Send</button>
                                 </span>

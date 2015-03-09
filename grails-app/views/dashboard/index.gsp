@@ -67,7 +67,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="panel">
-                                <div class="panel-heading panel-info">
+                                <div class="panel-heading panel-success">
                                     <h4 class="panel-title"><g:link controller="RegisteredDrones">Registered Drones</g:link></h4>
                                 </div>
                                 <div class="panel-body">

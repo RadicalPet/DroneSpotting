@@ -44,7 +44,7 @@
                     <sec:ifLoggedIn>
                         <li>
                             <g:link controller="User">
-                                Hello, <span id="logged-in-user"><sec:loggedInUserInfo field="username"/></span>
+                                Hello, <span id="loggedInUser"><sec:loggedInUserInfo field="username"/></span>
                             </g:link>
                         </li>
                         <li>
