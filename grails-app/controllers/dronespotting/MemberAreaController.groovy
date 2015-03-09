@@ -12,9 +12,4 @@ class MemberAreaController {
     def index() {
         
     }
-    //@MessageMapping("/hello")
-    //@SendTo("/topic/hello")
-    //protected String hello(String world) {
-    //    return "${world}!"
-    //}
 }

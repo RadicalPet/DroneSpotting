@@ -6,7 +6,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.messaging.handler.annotation.SendTo
 
-@Secured(['ROLE_MEMBER'])
+@Secured(['ROLE_MEMBER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
 class MemberArticlesController {
 
@@ -16,7 +16,6 @@ class MemberArticlesController {
         params.max = Math.min(max ?: 10, 100)
         respond Articles.list(params), model:[articlesInstanceCount: Articles.count()]
     }
-
     def show(Articles articlesInstance) {
         respond articlesInstance
     }
