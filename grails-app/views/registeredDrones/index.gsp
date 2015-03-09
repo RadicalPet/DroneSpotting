@@ -14,9 +14,11 @@
                     <div class="panel">
                         <div class="panel-heading panel-default">
                             <h4 class="panel-title"><g:message code="default.list.label" args="[entityName]" /></h4>
-                            <span class="pull-right panel-button">
-                                <g:link class="btn btn-success" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                            </span>
+                            <sec:ifLoggedIn>
+                                <span class="pull-right panel-button">
+                                    <g:link class="btn btn-success" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                                </span>
+                            </sec:ifLoggedIn>
                         </div>
                         <div class="panel-body">
                             <g:if test="${flash.message}">

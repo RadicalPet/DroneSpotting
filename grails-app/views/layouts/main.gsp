@@ -43,7 +43,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <sec:ifLoggedIn>
                         <li>
-                            <g:link controller="User">
+                            <g:link>
                                 Hello, <span id="loggedInUser"><sec:loggedInUserInfo field="username"/></span>
                             </g:link>
                         </li>
