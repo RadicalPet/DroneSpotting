@@ -1,148 +1,129 @@
 <!DOCTYPE html>
-<%@ page import="dronespotting.RegisteredDrones" %>
 <html>
-<head>
-		<meta name="layout" content="main"/>
-		<title>Dashboard</title>
-		<style type="text/css" media="screen">
-			#status {
-				background-color: #eee;
-				border: .2em solid #fff;
-				margin: 2em 2em 1em;
-				padding: 1em;
-				width: 12em;
-				float: left;
-				-moz-box-shadow: 0px 0px 1.25em #ccc;
-				-webkit-box-shadow: 0px 0px 1.25em #ccc;
-				box-shadow: 0px 0px 1.25em #ccc;
-				-moz-border-radius: 0.6em;
-				-webkit-border-radius: 0.6em;
-				border-radius: 0.6em;
-			}
-
-			.ie6 #status {
-				display: inline; /* float double margin fix http://www.positioniseverything.net/explorer/doubled-margin.html */
-			}
-
-			#status ul {
-				font-size: 0.9em;
-				list-style-type: none;
-				margin-bottom: 0.6em;
-				padding: 0;
-			}
-
-			#status li {
-				line-height: 1.3;
-			}
-
-			#status h1 {
-				text-transform: uppercase;
-				font-size: 1.1em;
-				margin: 0 0 0.3em;
-			}
-
-			#page-body {
-				margin: 2em 1em 1.25em 18em;
-			}
-
-			h2 {
-				margin-top: 1em;
-				margin-bottom: 0.3em;
-				font-size: 1em;
-			}
-
-			p {
-				line-height: 1.5;
-				margin: 0.25em 0;
-			}
-
-			#controller-list ul {
-				list-style-position: inside;
-			}
-
-			#controller-list li {
-				line-height: 1.3;
-				list-style-position: inside;
-				margin: 0.25em 0;
-			}
-
-			@media screen and (max-width: 480px) {
-				#status {
-					display: none;
-				}
-
-				#page-body {
-					margin: 0 1em 1em;
-				}
-
-				#page-body h1 {
-					margin-top: 0;
-				}
-			}
-		</style>
-	</head>
-	<body>
-
-	<div id="status" role="complementary">
-            <h1>Application Status</h1>
-            <ul>
-                <li>App version: <g:meta name="app.version"/></li>
-		<li>Grails version: <g:meta name="app.grails.version"/></li>
-		<li>Groovy version: ${GroovySystem.getVersion()}</li>
-                <li>JVM version: ${System.getProperty('java.version')}</li>
-		<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-		<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-		<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-		<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-		<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-            </ul>
-            <h1>Installed Plugins</h1>
-            <ul>
-		<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-                    <li>${plugin.name} - ${plugin.version}</li>
-                </g:each>
-            </ul>
-	</div>
-	<div id="page-body" role="main">
-            <div id="controller-list" role="navigation">
-		
-		<ul>
-                    <li class="controller"><g:link controller="RegisteredArms">Registered Arms</g:link></li>
-                    <li class="controller"><g:link controller="RegisteredDrones">Registered Drones</g:link></li>
-                    <li class="controller"><g:link controller="DroneArmament">Drone Armament</g:link></li>
-                    <li class="controller"><g:link controller="Role">User Roles</g:link></li>
-                    <li class="controller"><g:link controller="User">Users</g:link></li>
-                    <li class="controller"><g:link controller="UserRole">Roles per User</g:link></li>
-		</ul>
-            </div>
-	</div>
-                         <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <g:sortableColumn property="model" title="${message(code: 'registeredDrones.model.label', default: 'Model')}" />
-                                        <g:sortableColumn property="country" title="${message(code: 'registeredDrones.country.label', default: 'Country')}" />
-                                        <g:sortableColumn property="releaseDate" title="${message(code: 'registeredDrones.releaseDate.label', default: 'Release Date')}" />
-                                        <g:sortableColumn property="manufacturer" title="${message(code: 'registeredDrones.manufacturer.label', default: 'Manufacturer')}" />
-                                        <g:sortableColumn property="nationalityManufacturer" title="${message(code: 'registeredDrones.nationalityManufacturer.label', default: 'Nationality Manufacturer')}" />
-                                        <g:sortableColumn property="capacity" title="${message(code: 'registeredDrones.capacity.label', default: 'Capacity')}" />
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <g:each in="${registeredDronesInstanceList}" status="i" var="registeredDronesInstance">
-                                        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                                            <td><g:link action="show" id="${registeredDronesInstance.id}">${fieldValue(bean: registeredDronesInstance, field: "model")}</g:link></td>
-                                            <td>${fieldValue(bean: registeredDronesInstance, field: "country")}</td>
-                                            <td><g:formatDate format="d MMMM yyyy" date="${registeredDronesInstance.releaseDate}" /></td>
-                                            <td>${fieldValue(bean: registeredDronesInstance, field: "manufacturer")}</td>
-                                            <td>${fieldValue(bean: registeredDronesInstance, field: "nationalityManufacturer")}</td>
-                                            <td>${fieldValue(bean: registeredDronesInstance, field: "capacity")}</td>
-                                        </tr>
-                                    </g:each>
-                                </tbody>
-                            </table>
-
-                            <div class="pagination">
-                                <g:paginate total="${registeredDronesInstanceCount ?: 0}" />
+    <head>
+        <meta name="layout" content="main"/>
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <div class="container v-offset">
+            <h1 class="title">Dashboard</h1>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading panel-default">
+                                    <h4 class="panel-title">Application Status</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <tr><td>App version</td><td><g:meta name="app.version"/></td></tr>
+                                        <tr><td>Grails version</td><td><g:meta name="app.grails.version"/></td></tr>
+                                        <tr><td>Groovy version</td><td>${GroovySystem.getVersion()}</td></tr>
+                                        <tr><td>JVM version</td><td>${System.getProperty('java.version')}</td></tr>
+                                        <tr><td>Reloading active</td><td>${grails.util.Environment.reloadingAgentEnabled}</td></tr>
+                                        <tr><td>Controllers</td><td>${grailsApplication.controllerClasses.size()}</td></tr>
+                                        <tr><td>Domains</td><td>${grailsApplication.domainClasses.size()}</td></tr>
+                                        <tr><td>Services</td><td>${grailsApplication.serviceClasses.size()}</td></tr>
+                                        <tr><td>Tag Libraries</td><td>${grailsApplication.tagLibClasses.size()}</td></tr>
+                                    </table>
+                                </div>
                             </div>
-</body>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading panel-default">
+                                    <h4 class="panel-title">Installed Plugins</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
+                                            <tr>
+                                                <td>${plugin.name}</td>
+                                                <td>${plugin.version}</td>
+                                            </tr>
+                                        </g:each>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+                </div> 
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading panel-info">
+                                    <h4 class="panel-title"><g:link controller="User">Users</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/user/list"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading panel-success">
+                                    <h4 class="panel-title"><g:link controller="RegisteredDrones">Registered Drones</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/registeredDrones/list"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel">
+                                <div class="panel-heading panel-danger">
+                                    <h4 class="panel-title"><g:link controller="RegisteredArms">Registered Arms</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/registeredArms/list"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-heading panel-warning">
+                                    <h4 class="panel-title"><g:link controller="DroneArmament">Drone Armament</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/droneArmament/list"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-heading panel-success">
+                                    <h4 class="panel-title"><g:link controller="UserRole">User Roles</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/userRole/list"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-heading panel-info">
+                                    <h4 class="panel-title"><g:link controller="Role">Available Roles</g:link></h4>
+                                </div>
+                                <div class="panel-body">
+                                    <g:render template="/role/list"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

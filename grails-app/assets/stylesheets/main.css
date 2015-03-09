@@ -30,7 +30,7 @@ body {
     padding-top: 100px;
     background-color: #f2f2f2;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     color: #555;
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
@@ -42,6 +42,20 @@ body {
     width: 100%;
     padding-left: 0;
     padding-right: 0;
+}
+
+.title {
+    padding-bottom: 20px;
+    color: #ccc;
+    display: inline-block;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+#cke_content {
+    width: 100% !important;
 }
 
 /* UI COMPONENTS */
@@ -152,6 +166,15 @@ body {
 .panel-heading.panel-danger {
     background-color: #e74c3c;
     border-color: #e74c3c;
+}
+
+.panel-footer {
+    border: none;
+    padding: 10px 20px;
+}
+
+.panel {
+    border: none;
 }
 
 /* GENERAL */
@@ -357,4 +380,67 @@ div.custominfostyle {
 
 #login input.btn {
     font-size: 14px;
+}
+
+/* CHAT */
+
+#chat .panel-body {
+    overflow: auto;
+    max-height: 440px;
+}
+
+#chat .message-container {
+    margin: 0;
+}
+
+#chat .message-container:not(:first-of-type) {
+    padding-top: 15px;
+}
+
+#chat .message {
+    padding: 10px;
+    border-radius: 2px;
+    max-width: 100%;
+    background-color: #f0f0f0;
+}
+
+#chat .sent .message {
+    background-color: rgba(231, 76, 60, .2);
+}
+
+#chat .message .user {
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#chat .sent .user {
+    color: #e74c3c;
+}
+
+#chat .message .text {
+    line-height: 20px;
+    font-size: 12px;
+}
+
+/* ARTICLES */
+
+.article-time {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.article-raw {
+    line-height: 24px;
+    width: 100%;
+}
+
+.article-raw.trim {
+    max-height: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.article-raw p {
+    white-space: normal;
 }

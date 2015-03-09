@@ -111,7 +111,7 @@
         <div id="page-body" role="main">
             <div id="loading">
                 <i class="fa fa-rocket fa-4x animated"></i>
-                <h1>Deploying awesomeness...</h1>
+                <h1>Launching...</h1>
             </div>
             <div id="timemap">
                 <div id="timelinecontainer">

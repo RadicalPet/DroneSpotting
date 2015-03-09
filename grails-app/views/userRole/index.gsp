@@ -22,22 +22,7 @@
                             <g:if test="${flash.message}">
                                 <div class="alert alert-info" role="status">${flash.message}</div>
                             </g:if>
-                            <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th><g:message code="userRole.role.label" default="Role" /></th>
-                                        <th><g:message code="userRole.user.label" default="User" /></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <g:each in="${userRoleInstanceList}" status="i" var="userRoleInstance">
-                                        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                                            <td><g:link action="show" id="${userRoleInstance.id}">${fieldValue(bean: userRoleInstance, field: "role")}</g:link></td>
-                                            <td>${fieldValue(bean: userRoleInstance, field: "user")}</td>
-                                        </tr>
-                                    </g:each>
-                                </tbody>
-                            </table>
+                            <g:render template="list"/>
                             <div class="pagination">
                                 <g:paginate total="${userRoleInstanceCount ?: 0}" />
                             </div>
@@ -45,11 +30,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
-        
-        
-            
         </div>
     </body>
 </html>

@@ -3,6 +3,8 @@ package dronespotting
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import grails.plugin.springsecurity.annotation.Secured
+import org.springframework.messaging.handler.annotation.MessageMapping
+import org.springframework.messaging.handler.annotation.SendTo
 
 @Secured(['ROLE_MEMBER'])
 @Transactional(readOnly = true)
@@ -106,5 +108,10 @@ class MemberArticlesController {
             }
             '*'{ render status: NOT_FOUND }
         }
+    }
+    @MessageMapping("/hello")
+    @SendTo("/topic/hello")
+    protected String hello(String chatMessage) {
+        return "${chatMessage}"
     }
 }
