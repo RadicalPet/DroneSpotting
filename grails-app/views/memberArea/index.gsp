@@ -56,7 +56,5 @@
                 </div>
             </div>
         </div>
-        <button id="helloButton">hello</button>
-        <div id="helloDiv"></div>
     </body>
 </html>

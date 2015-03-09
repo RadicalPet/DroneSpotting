@@ -6,6 +6,38 @@
         <g:set var="entityName" value="${message(code: 'articles.label', default: 'Articles')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
         <script src="../../assets/ckeditor.js" type="text/javascript"></script>
+        <asset:javascript src="jquery" />
+        <asset:javascript src="spring-websocket" />
+        <script type="text/javascript">
+            $(function() { 
+                var socket = new SockJS("${createLink(uri: '/stomp')}");
+                var client = Stomp.over(socket);
+                var chatMessage = new Object();
+                
+                
+                client.connect({}, function() {
+                    client.subscribe("/topic/hello", function(chatMessage) {
+                        var message = chatMessage.body;
+                        message = decodeURIComponent(message);
+                        var newString = message.substring(1);
+                        newString = newString.substring(0, newString.length - 1);
+                        message = JSON.parse(newString);
+                        $("chatContainer").append(message.username);
+                        
+                    });
+                });
+
+                $("#sendMessage").click(function() {
+                    var chatMessage = new Object();
+                    chatMessage.message =  $("#writeMessage").val();
+                    chatMessage.username = $("#loggedInUser").text();
+                    var messageStringified = JSON.stringify(chatMessage);
+                    var messageEncoded = encodeURIComponent(messageStringified);
+                    client.send("/app/hello", {}, JSON.stringify(messageEncoded));
+                
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="container v-offset">
@@ -48,8 +80,9 @@
                             <h4 class="panel-title">Chat</h4>
                         </div>
                         <div class="panel-body">
-                           chat here
+                            
                         </div>
+        
                     </div>
                 </div>
             </div>
