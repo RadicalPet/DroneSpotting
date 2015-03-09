@@ -422,3 +422,25 @@ div.custominfostyle {
     line-height: 20px;
     font-size: 12px;
 }
+
+/* ARTICLES */
+
+.article-time {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.article-raw {
+    line-height: 24px;
+    width: 100%;
+}
+
+.article-raw.trim {
+    max-height: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.article-raw p {
+    white-space: normal;
+}
