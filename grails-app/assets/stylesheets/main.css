@@ -168,6 +168,15 @@ body {
     border-color: #e74c3c;
 }
 
+.panel-footer {
+    border: none;
+    padding: 10px 20px;
+}
+
+.panel {
+    border: none;
+}
+
 /* GENERAL */
 
 #loading {
@@ -371,4 +380,45 @@ div.custominfostyle {
 
 #login input.btn {
     font-size: 14px;
+}
+
+/* CHAT */
+
+#chat .panel-body {
+    overflow: auto;
+    max-height: 440px;
+}
+
+#chat .message-container {
+    margin: 0;
+}
+
+#chat .message-container:not(:first-of-type) {
+    padding-top: 15px;
+}
+
+#chat .message {
+    padding: 10px;
+    border-radius: 2px;
+    max-width: 100%;
+    background-color: #f0f0f0;
+}
+
+#chat .sent .message {
+    background-color: rgba(231, 76, 60, .2);
+}
+
+#chat .message .user {
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+#chat .sent .user {
+    color: #e74c3c;
+}
+
+#chat .message .text {
+    line-height: 20px;
+    font-size: 12px;
 }
