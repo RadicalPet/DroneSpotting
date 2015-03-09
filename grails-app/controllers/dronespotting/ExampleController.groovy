@@ -5,7 +5,7 @@ import org.springframework.messaging.handler.annotation.SendTo
 import grails.plugin.springsecurity.annotation.Secured
 import dronespotting.User
 
- @Secured(['ROLE_MEMBER', 'ROLE_ADMIN']) 
+@Secured(['ROLE_MEMBER', 'ROLE_ADMIN']) 
 class ExampleController {
 
     def index() {}

@@ -8,7 +8,7 @@
 
         <script type="text/javascript">
             $(function() { 
-                var socket = new SockJS("${createLink(uri: '/somewhere/stomp')}");
+                var socket = new SockJS("${createLink(uri: '/stomp')}");
                 var client = Stomp.over(socket);
 
                 client.connect({}, function() {
@@ -18,7 +18,7 @@
                 });
 
                 $("#helloButton").click(function() {
-                    client.send("/app/hello", {}, JSON.stringify("world"));
+                    client.send("/app/hello", {}, JSON.stringify("fuck you"));
                 });
             });
         </script> 
