@@ -43,6 +43,9 @@
                     var messageEncoded = encodeURIComponent(messageStringified);
                     client.send("/app/hello", {}, JSON.stringify(messageEncoded));
                 });
+                $.getJSON("/DroneSpotting/JSON/test", function(json) {
+                    localStorage.editData = JSON.stringify(json);
+                });
                 
                 
             });
