@@ -22,6 +22,7 @@ grails.mime.types = [ // the first one is the default format
     csv:           'text/csv',
     form:          'application/x-www-form-urlencoded',
     html:          ['text/html','application/xhtml+xml'],
+    jnlp:           'application/x-java-jnlp-file',
     js:            'text/javascript',
     json:          ['application/json', 'text/json'],
     multipartForm: 'multipart/form-data',
@@ -134,6 +135,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
-        '/stomp/**':                      ['permitAll']
+        '/stomp/**':                      ['permitAll'],
+        '/dist/**':                       ['permitAll']
 ]
 

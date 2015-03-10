@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jnlp codebase="http://localhost:9000/DroneSpotting/dist/" href="launch.jnlp" spec="1.0+">
+    <information>
+        <title>DroneSimulator</title>
+        <vendor>andreiho</vendor>
+        <homepage href="http://localhost:9000/DroneSpotting/dist/"/>
+        <description>DroneSimulator</description>
+        <description kind="short">DroneSimulator</description>
+    </information>
+    <update check="background"/>
+    <resources>
+        <j2se java-vm-args="-Djava.security.policy=applet.policy" version="1.8+"/>
+        <jar href="DroneSimulator.jar" main="true"/>
+        <jar href="lib/beansbinding-1.2.1.jar"/>
+        <jar href="lib/java-json.jar"/>
+        <jar href="lib/geocoder-java-0.16.jar"/>
+        <jar href="lib/gson-2.2.4.jar"/>
+        <jar href="lib/slf4j-api-1.7.7.jar"/>
+        <jar href="lib/slf4j-simple-1.7.10.jar"/>
+        <jar href="lib/AbsoluteLayout.jar"/>
+</resources>
+    <applet-desc height="560" main-class="dronesimulator.DroneSimulator" name="DroneSimulator" width="640">
+    </applet-desc>
+</jnlp>
