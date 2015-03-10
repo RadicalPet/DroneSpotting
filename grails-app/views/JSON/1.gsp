@@ -19,8 +19,20 @@
             "username": "hans"
         },
         {
+            "message": "wot?",
+            "username": "bobby"
+        },
+        {
+            "message": "hm",
+            "username": "bobby"
+        },
+        {
+            "message": "and",
+            "username": "bobby"
+        },
+        {
             "username": "bobby",
-            "message": "wot?"
+            "message": "asas"
         }
     ]
 }

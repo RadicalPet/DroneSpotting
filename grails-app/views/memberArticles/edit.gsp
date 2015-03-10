@@ -7,13 +7,24 @@
         <meta name="layout" content="main">
         <g:set var="entityName" value="${message(code: 'articles.label', default: 'Articles')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
+        <script type="text/javascript">
+        
+        
+        </script>
+        
         <script src="../../assets/ckeditor.js" type="text/javascript"></script>
         <asset:javascript src="jquery" />
         <asset:javascript src="spring-websocket" />
         <script type="text/javascript">
-            $(function() { 
+            $(function() {
+               
                 var socket = new SockJS("${createLink(uri: '/stomp')}");
+                var contentSocket = new SockJS("${createLink(uri: '/stomp')}");
+                
+                
                 var client = Stomp.over(socket);
+                var contentClient = Stomp.over(contentSocket);
+                
                 var chatMessage = new Object();
                 
                 client.connect({}, function() {
@@ -71,6 +82,23 @@
                     $("#editor").html("  Editor: " + messageObject.editor);
                 }
                 loadData();
+     
+                contentClient.connect({}, function() {
+                    contentClient.subscribe("/topic/content", function(content) {
+                        
+                        decoded = decodeURIComponent(content);
+                        console.log("good night");
+                       
+                    });
+                });
+             
+                CKEDITOR.instances.content.on( 'saveSnapshot', function(e) { 
+                    
+                    var content = CKEDITOR.instances.content.getData();
+                    var contentEncoded = encodeURIComponent(content);
+                    contentClient.send("/app/content", {}, contentEncoded);     
+                });
+                
             });
         </script>
     </head>

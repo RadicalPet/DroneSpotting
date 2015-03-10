@@ -138,13 +138,17 @@ class MemberArticlesController {
         String fileContents = new File(servletContext.getRealPath("../")+"/grails-app/views/JSON/"+slurpResultMessage.articleID+".gsp").text
         def slurpResultFile = slurper.parseText(fileContents)
         slurpResultFile.messages.add(["username": slurpResultMessage.username, "message": slurpResultMessage.message])
-        
-        //def str = slurpResultFile.toString()
-        //slurpResultFile.messages.add('{"username":"'+slurpResultMessage.editor+'","message":"'+slurpResultMessage.message+'"}')
-        //def json = JsonOutput.toJson(slurpResultFile)
-        //def str = json.toString()
         String str = new JsonBuilder( slurpResultFile ).toPrettyString()
+        
         writeToFile(str, slurpResultMessage.articleID)
+        
         return "${chatMessage}"
+    }
+    @MessageMapping("/content")
+    @SendTo("/topic/content")
+    protected String content(String content) {
+        String result = java.net.URLDecoder.decode(content, "UTF-8")
+        writeToFile("hm", "2")
+        return "aaah"
     }
 }
