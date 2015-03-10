@@ -15,7 +15,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <g:link absolute="true" base="http://localhost:9000/DroneSpotting" uri="/" class="navbar-brand">
+                <g:link uri="/" class="navbar-brand">
                     <i class="fa fa-rocket fa-3x fa-fw"></i>
                 </g:link>
             </div>
@@ -43,22 +43,17 @@
                 <ul class="nav navbar-nav navbar-right">
                     <sec:ifLoggedIn>
                         <li>
-                            <g:link controller="User">
+                            <g:link>
                                 Hello, <span id="loggedInUser"><sec:loggedInUserInfo field="username"/></span>
                             </g:link>
                         </li>
                         <li>
-                            <g:link controller='logout'>Logout</g:link>
+                            <g:link controller='logout' class="btn btn-danger">Logout</g:link>
                         </li>
                     </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
                         <li>
-                            <g:link absolute="true" base="http://localhost:9000/DroneSpotting" uri="/login/auth">
-                                Sign in
-                            </g:link>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-danger">Become a member</a>
+                            <g:link uri="/login/auth" class="btn btn-danger">Sign in</g:link>
                         </li>
                     </sec:ifNotLoggedIn>
                 </ul>

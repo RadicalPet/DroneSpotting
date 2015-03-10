@@ -15,7 +15,9 @@
                         <div class="panel-heading panel-default">
                             <h4 class="panel-title"><g:fieldValue bean="${registeredDronesInstance}" field="model"/></h4>
                             <span class="pull-right panel-button">
-                                <g:link class="btn btn-success" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+                                <sec:ifLoggedIn>
+                                    <g:link class="btn btn-success" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
+                                </sec:ifLoggedIn>
                                 <g:link class="btn btn-info" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>
                             </span>
                         </div>
@@ -23,12 +25,14 @@
                             <g:if test='${flash.message}'>
                                 <div class='alert alert-info'>${flash.message}</div>
                             </g:if>
-                            <g:form url="[resource:registeredDronesInstance, action:'delete']" method="DELETE">
-                                <div class="form-group">
-                                    <g:link class="btn btn-default" action="edit" resource="${registeredDronesInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-                                    <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                                </div>
-                            </g:form>
+                            <sec:ifLoggedIn>
+                                <g:form url="[resource:registeredDronesInstance, action:'delete']" method="DELETE">
+                                    <div class="form-group">
+                                        <g:link class="btn btn-default" action="edit" resource="${registeredDronesInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                                        <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                    </div>
+                                </g:form>
+                            </sec:ifLoggedIn>
                             <table class="table table-hover table-striped">
                                 <tbody>
                                     <g:if test="${registeredDronesInstance?.model}">
