@@ -19,43 +19,42 @@
             $(function() {
                
                 var socket = new SockJS("${createLink(uri: '/stomp')}");
-                var contentSocket = new SockJS("${createLink(uri: '/stomp')}");
-                
-                
+                //var contentSocket = new SockJS("${createLink(uri: '/stomp')}");
+                               
                 var client = Stomp.over(socket);
-                var contentClient = Stomp.over(contentSocket);
+                //var contentClient = Stomp.over(contentSocket);
                 
                 var chatMessage = new Object();
                 
-                client.connect({}, function() {
-                    client.subscribe("/topic/hello", function(chatMessage) {
-                        console.log(chatMessage);
-                        var message = chatMessage.body;
-                        message = decodeURIComponent(message);
-                        var newString = message.substring(1);
-                        newString = newString.substring(0, newString.length - 1);
-                        message = JSON.parse(newString);
-                        if (message.articleID == $("#articleID").val()){
-                            $("#chatContainer").append(' <div class="row message-container received"> ' +
-                                                   ' <div class="message"> ' +
-                                                   ' <div class="user" id="loggedInUser"> ' + message.username + ' </div> ' +
-                                                   ' <p class="text"> ' + message.message + ' </p> ' +
-                                                   ' </div> ' +
-                                                   ' </div> ');
-                        }
-                    });
-                });
-
-                $("#sendMessage").click(function() {
-                    var chatMessage = new Object();
-                    chatMessage.message =  $("#writeMessage").val();
-                    $("#writeMessage").val("");
-                    chatMessage.articleID = $("#articleID").val();
-                    chatMessage.username = $("#loggedInUser").text();
-                    var messageStringified = JSON.stringify(chatMessage);
-                    var messageEncoded = encodeURIComponent(messageStringified);
-                    client.send("/app/hello", {}, JSON.stringify(messageEncoded));
-                });
+//                client.connect({}, function() {
+//                    client.subscribe("/topic/hello", function(chatMessage) {
+//                        console.log(chatMessage);
+//                        var message = chatMessage.body;
+//                        message = decodeURIComponent(message);
+//                        var newString = message.substring(1);
+//                        newString =  menewString.substring(0, newString.length - 1);
+//                        message = JSON.parse(newString);
+//                        if (message.articleID == $("#articleID").val()){
+//                            $("#chatContainer").append(' <div class="row message-container received"> ' +
+//                                                   ' <div class="message"> ' +
+//                                                   ' <div class="user" id="loggedInUser"> ' + message.username + ' </div> ' +
+//                                                   ' <p class="text"> ' + message.message + ' </p> ' +
+//                                                   ' </div> ' +
+//                                                   ' </div> ');
+//                        }
+//                    });
+//                });
+//
+//                $("#sendMessage").click(function() {
+//                    var chatMessage = new Object();
+//                    chatMessage.message =  $("#writeMessage").val();
+//                    $("#writeMessage").val("");
+//                    chatMessage.articleID = $("#articleID").val();
+//                    chatMessage.username = $("#loggedInUser").text();
+//                    var messageStringified = JSON.stringify(chatMessage);
+//                    var messageEncoded = encodeURIComponent(messageStringified);
+//                    client.send("/app/hello", {}, JSON.stringify(messageEncoded));
+//                });
                 var articleId = document.location.href.match(/[^\/]+$/)[0];
                 localStorage.articleId = articleId.toString();
                 var url = "/DroneSpotting/JSON/test/" + articleId;
@@ -82,12 +81,20 @@
                     $("#editor").html("  Editor: " + messageObject.editor);
                 }
                 loadData();
+                
+                function nl2br (str, is_xhtml) {   
+                    var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';    
+                    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1'+ breakTag +'$2');
+                }
      
-                contentClient.connect({}, function() {
-                    contentClient.subscribe("/topic/content", function(content) {
+                client.connect({}, function() {
+                    client.subscribe("/topic/content", function(content) {
                         
-                        decoded = decodeURIComponent(content);
-                        console.log("good night");
+                        message = decodeURIComponent(content.body);
+                        message = JSON.parse(message);
+                        message = message.replace(/(?:\r\n|\r|\n)/g, '&nbsp;');
+
+                        CKEDITOR.instances.content.setData(message);
                        
                     });
                 });
@@ -95,8 +102,8 @@
                 CKEDITOR.instances.content.on( 'saveSnapshot', function(e) { 
                     
                     var content = CKEDITOR.instances.content.getData();
-                    var contentEncoded = encodeURIComponent(content);
-                    contentClient.send("/app/content", {}, contentEncoded);     
+                    
+                    client.send("/app/content", {}, JSON.stringify(content));     
                 });
                 
             });
@@ -154,6 +161,7 @@
                                 <button class="btn btn-danger btn-sm" id="sendMessage">Send</button>
                                 </span>
                             </div>
+                            <div id="test"></div>
                         </div>
         
                     </div>

@@ -28,7 +28,8 @@ grails.mime.types = [ // the first one is the default format
     rss:           'application/rss+xml',
     text:          'text/plain',
     hal:           ['application/hal+json','application/hal+xml'],
-    xml:           ['text/xml', 'application/xml']
+    xml:           ['text/xml', 'application/xml'],
+    jnlp:           'application/x-java-jnlp-file'
 ]
 
 // URL Mapping Cache Max Size, defaults to 5000
@@ -134,6 +135,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
 	'/**/favicon.ico':                ['permitAll'],
-        '/stomp/**':                      ['permitAll']
+        '/stomp/**':                      ['permitAll'],
+        '/dist/**':                       ['permitAll']
 ]
 
