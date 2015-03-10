@@ -1,4 +1,5 @@
 <%@ page import="dronespotting.Articles" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,7 +29,7 @@
                             </g:if>
                             <g:form url="[resource:memberArticlesInstance, action:'delete', id:articlesInstance.id]" method="DELETE">
                                 <fieldset class="form-group">
-                                    <g:link class="btn btn-default" action="edit" id="${articlesInstance.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                                    <g:link class='btn btn-default' action='edit' id='${articlesInstance.id}' params='[username: "${sec.username()}"]'><g:message code="default.button.edit.label" default="Edit" /></g:link>
                                     <!--<g:submitButton name="delete" class="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" />-->
                                     <g:actionSubmit class="btn btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                                 </fieldset>

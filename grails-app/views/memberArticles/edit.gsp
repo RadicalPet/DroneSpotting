@@ -1,4 +1,6 @@
 <%@ page import="dronespotting.Articles" %>
+<%@ page import="grails.plugin.springsecurity.*" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,15 +45,36 @@
                     var messageEncoded = encodeURIComponent(messageStringified);
                     client.send("/app/hello", {}, JSON.stringify(messageEncoded));
                 });
-                $.getJSON("/DroneSpotting/JSON/test", function(json) {
-                    localStorage.editData = JSON.stringify(json);
+                var articleId = document.location.href.match(/[^\/]+$/)[0];
+                localStorage.articleId = articleId.toString();
+                var url = "/DroneSpotting/JSON/test/" + articleId;
+                $.ajax({
+                
+                    dataType: "json",
+                    url: url,
+                    success: function(data){
+                        localStorage.articleData = JSON.stringify(data);
+                    }
                 });
+                function loadData(){
+                    var messageObject = JSON.parse(localStorage.articleData);
+                    var x = messageObject.messages.length;
                 
-                
+                    for (var i = 0; i < x; i++){
+                        $("#chatContainer").append(' <div class="row message-container received"> ' +
+                                                   ' <div class="message"> ' +
+                                                   ' <div class="user" id="loggedInUser"> ' + messageObject.messages[i].username + ' </div> ' +
+                                                   ' <p class="text"> ' + messageObject.messages[i].message + ' </p> ' +
+                                                   ' </div> ' +
+                                                   ' </div> ');
+                    }
+                    $("#editor").html("  Editor: " + messageObject.editor);
+                }
+                loadData();
             });
         </script>
     </head>
-    <body>
+    <body onload="loadData()">
         <g:hiddenField name="id"  id="articleID" value="$articlesInstance.id" />
         <div class="container v-offset">
             <div class="row">
@@ -59,6 +82,7 @@
                     <div class="panel">
                         <div class="panel-heading panel-default">
                             <h4 class="panel-title"><g:message code="default.create.label" args="[entityName]" /></h4>
+                            <span id="editor" style="color: #E74C3C"></span>
                             <span class="pull-right panel-button">
                                 <g:link class="btn btn-success" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link>
                                 <g:link class="btn btn-info" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link>

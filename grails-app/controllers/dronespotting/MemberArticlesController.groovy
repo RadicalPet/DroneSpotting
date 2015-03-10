@@ -6,6 +6,9 @@ import org.apache.commons.io.FileUtils;
 import grails.plugin.springsecurity.annotation.Secured
 import org.springframework.messaging.handler.annotation.MessageMapping
 import org.springframework.messaging.handler.annotation.SendTo
+import grails.converters.*
+import groovy.json.JsonSlurper
+import groovy.json.JsonBuilder
 
 @Secured(['ROLE_MEMBER', 'ROLE_ADMIN'])
 @Transactional(readOnly = true)
@@ -31,7 +34,7 @@ class MemberArticlesController {
         [articlesInstanceList: results, articlesInstanceTotal: Articles.count()]
     }
     def test(){
-        writeToFile("hm", "hm")
+      
     }
 
     @Transactional
@@ -57,7 +60,14 @@ class MemberArticlesController {
         }
     }
 
-    def edit(Articles articlesInstance) {
+    def edit(Articles articlesInstance, String username) {
+        
+        def fileStore = new File( servletContext.getRealPath("../")+"/grails-app/views/JSON/"+articlesInstance.id+".gsp");
+        if(!fileStore.exists()){
+            fileStore.createNewFile();
+            def data = '{"editor":"'+params.username+'","article":"'+articlesInstance.id+'","messages":[]}';
+            FileUtils.writeStringToFile(fileStore, data);
+        }
         respond articlesInstance
     }
 
@@ -121,8 +131,20 @@ class MemberArticlesController {
     @MessageMapping("/hello")
     @SendTo("/topic/hello")
     protected String hello(String chatMessage) {
-        String result = java.net.URLDecoder.decode(chatMessage, "UTF-8");
-        writeToFile(result, "bla")
+        def slurper = new JsonSlurper()
+        String result = java.net.URLDecoder.decode(chatMessage, "UTF-8")
+        def slurpResultMessage = slurper.parseText(result);
+        
+        String fileContents = new File(servletContext.getRealPath("../")+"/grails-app/views/JSON/"+slurpResultMessage.articleID+".gsp").text
+        def slurpResultFile = slurper.parseText(fileContents)
+        slurpResultFile.messages.add(["username": slurpResultMessage.username, "message": slurpResultMessage.message])
+        
+        //def str = slurpResultFile.toString()
+        //slurpResultFile.messages.add('{"username":"'+slurpResultMessage.editor+'","message":"'+slurpResultMessage.message+'"}')
+        //def json = JsonOutput.toJson(slurpResultFile)
+        //def str = json.toString()
+        String str = new JsonBuilder( slurpResultFile ).toPrettyString()
+        writeToFile(str, slurpResultMessage.articleID)
         return "${chatMessage}"
     }
 }

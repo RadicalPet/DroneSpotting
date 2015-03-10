@@ -20,7 +20,7 @@ class JSONController {
             
         }
     }
-    def test(){
-        render (view: 'bla')
+    def test(String id){
+        render (view: id)
     }
 }
