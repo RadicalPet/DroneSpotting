@@ -444,3 +444,9 @@ div.custominfostyle {
 .article-raw p {
     white-space: normal;
 }
+
+/* SIMULATOR */
+
+.simulator-help {
+    line-height: 24px;
+}

@@ -25,7 +25,7 @@
                         <g:link controller="RegisteredDrones">Drones</g:link>
                     </li>
                     <li>
-                        <a href="#">Simulator</a>
+                        <g:link controller="Simulator">Simulator</g:link>
                     </li>
                     <sec:ifLoggedIn>
                         <li>
