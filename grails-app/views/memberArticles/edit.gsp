@@ -31,6 +31,15 @@
                                                    ' </div> ');
                         }
                     });
+                    client.subscribe("/topic/content", function(content) {
+                        
+                        message = decodeURIComponent(content.body);
+                        message = JSON.parse(message);
+                        message = message.replace(/(?:\r\n|\r|\n)/g, '&nbsp;');
+
+                        CKEDITOR.instances.content.setData(message);
+                       
+                    });
                 });
 
                 $("#sendMessage").click(function() {
@@ -43,6 +52,15 @@
                     var messageEncoded = encodeURIComponent(messageStringified);
                     client.send("/app/hello", {}, JSON.stringify(messageEncoded));
                 });
+                
+                             
+                CKEDITOR.instances.content.on( 'saveSnapshot', function(e) { 
+                    
+                    var content = CKEDITOR.instances.content.getData();
+                    
+                    client.send("/app/content", {}, JSON.stringify(content));     
+                });
+                
                 $.getJSON("/DroneSpotting/JSON/test", function(json) {
                     localStorage.editData = JSON.stringify(json);
                 });
