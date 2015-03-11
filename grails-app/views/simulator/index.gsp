@@ -30,6 +30,8 @@
                 </div>
                 <div class="col-md-8">
                     <script>
+                        var curUrl = window.location.hostname + ":" + window.location.port;
+                        
                         var attributes = {
                             code:       "dronesimulator.DroneSimulator",
                             archive:    "DroneSimulator.jar, lib/geocoder-java-0.16.jar, lib/AbsoluteLayout.jar, lib/gson-2.2.4.jar, lib/beansbinding-1.2.1.jar, lib/slf4j-api-1.7.7.jar, lib/java-json.jar, lib/slf4j-simple-1.7.10.jar",
@@ -37,7 +39,6 @@
                             height:     560
                         };
                         
-                        var curUrl = window.location.hostname + ":" + window.location.port;
                         var parameters = {jnlp_href: "http://" + curUrl + "/DroneSpotting/dist/launch.jnlp"};
                         var version = "1.8";
                         deployJava.runApplet(attributes, parameters, version);
