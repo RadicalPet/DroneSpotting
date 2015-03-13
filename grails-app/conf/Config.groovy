@@ -141,3 +141,20 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/dist/**':                       ['permitAll']
 ]
 
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'SpringUser.Role'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'SpringUser.RoleUserRole'
+grails.plugin.springsecurity.authority.className = 'SpringUser.UserRole'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                              ['permitAll'],
+	'/index':                         ['permitAll'],
+	'/index.gsp':                     ['permitAll'],
+	'/assets/**':                     ['permitAll'],
+	'/**/js/**':                      ['permitAll'],
+	'/**/css/**':                     ['permitAll'],
+	'/**/images/**':                  ['permitAll'],
+	'/**/favicon.ico':                ['permitAll']
+]
+
