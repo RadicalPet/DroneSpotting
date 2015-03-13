@@ -52,7 +52,8 @@ grails.project.dependency.resolution = {
     // This line is necessary for deployment to Tomcat, since
     // Tomcat comes with its own version of javax.websocket-api.
             export = false
-        }  
+        } 
+        runtime "postgresql:postgresql:9.1-901.jdbc4" 
     }
 
     plugins {
@@ -71,9 +72,11 @@ grails.project.dependency.resolution = {
         compile ":ckeditor:4.4.1.0"
         compile ":twitter-bootstrap:3.3.1"
 
-
+        compile ":postgresql-extensions:3.3.0"
+ 
         // plugins needed at runtime but not for compilation
-        runtime ":hibernate4:4.3.6.1" // or ":hibernate:3.6.10.18"
+        //runtime ":hibernate4:4.3.6.1" // or 
+        runtime ":hibernate:3.6.10.18"
         runtime ":database-migration:1.4.0"
         runtime ":resources:1.2.14"
         runtime ":cached-resources:1.0"
